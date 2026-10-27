@@ -1,0 +1,739 @@
+{
+  "meta": {
+    "seed": 42,
+    "cves": 61,
+    "products": 59,
+    "vendors": 31,
+    "note": "Gold answers describe the graph built from LLM extraction, not the real world."
+  },
+  "questions": [
+    {
+      "id": "A1-1",
+      "type": "A",
+      "question": "Which products does CVE-2026-21589 affect?",
+      "answer_type": "products",
+      "gold": [
+        {
+          "name": "Bamboo Data Center",
+          "aliases": [
+            "Bamboo Data Center"
+          ]
+        },
+        {
+          "name": "Bitbucket Data Center",
+          "aliases": [
+            "Bitbucket Data Center"
+          ]
+        },
+        {
+          "name": "Confluence Data Center",
+          "aliases": [
+            "Confluence Data Center"
+          ]
+        },
+        {
+          "name": "Crowd Data Center",
+          "aliases": [
+            "Crowd Data Center"
+          ]
+        },
+        {
+          "name": "Crucible",
+          "aliases": [
+            "Crucible"
+          ]
+        },
+        {
+          "name": "Fisheye",
+          "aliases": [
+            "Fisheye"
+          ]
+        },
+        {
+          "name": "Jira Service Management Data Center",
+          "aliases": [
+            "Jira Service Management Data Center"
+          ]
+        },
+        {
+          "name": "Jira Software Data Center",
+          "aliases": [
+            "Jira Software Data Center"
+          ]
+        }
+      ],
+      "gold_cypher": "MATCH (:CVE {cve_id: \"CVE-2026-21589\"})-[:AFFECTS]->(p:Product) RETURN DISTINCT p.name AS name",
+      "gold_quality": "exact (graph)"
+    },
+    {
+      "id": "A1-2",
+      "type": "A",
+      "question": "Which products does CVE-2025-25249 affect?",
+      "answer_type": "products",
+      "gold": [
+        {
+          "name": "FortiOS",
+          "aliases": [
+            "FortiOS"
+          ]
+        },
+        {
+          "name": "FortiSwitchManager",
+          "aliases": [
+            "FortiSwitchManager"
+          ]
+        }
+      ],
+      "gold_cypher": "MATCH (:CVE {cve_id: \"CVE-2025-25249\"})-[:AFFECTS]->(p:Product) RETURN DISTINCT p.name AS name",
+      "gold_quality": "exact (graph)"
+    },
+    {
+      "id": "A2-1",
+      "type": "A",
+      "question": "Which vendor produces Windows Shell?",
+      "answer_type": "vendors",
+      "gold": [
+        {
+          "name": "Microsoft",
+          "aliases": [
+            "Microsoft"
+          ]
+        }
+      ],
+      "gold_cypher": "MATCH (v:Vendor)-[:PRODUCES]->(:Product {product_id: \"p:microsoft:windowsshell\"}) RETURN DISTINCT v.name AS name",
+      "gold_quality": "exact (graph)"
+    },
+    {
+      "id": "A2-2",
+      "type": "A",
+      "question": "Which vendor produces VeloCloud Orchestrator?",
+      "answer_type": "vendors",
+      "gold": [
+        {
+          "name": "Arista",
+          "aliases": [
+            "Arista"
+          ]
+        }
+      ],
+      "gold_cypher": "MATCH (v:Vendor)-[:PRODUCES]->(:Product {product_id: \"p:arista:velocloudorchestrator\"}) RETURN DISTINCT v.name AS name",
+      "gold_quality": "exact (graph)"
+    },
+    {
+      "id": "A3-1",
+      "type": "A",
+      "question": "Which CVEs affect NetScaler ADC?",
+      "answer_type": "cves",
+      "gold": [
+        {
+          "name": "CVE-2026-19490",
+          "aliases": []
+        },
+        {
+          "name": "CVE-2026-88771",
+          "aliases": []
+        },
+        {
+          "name": "CVE-2026-88772",
+          "aliases": []
+        },
+        {
+          "name": "CVE-2026-88779",
+          "aliases": []
+        }
+      ],
+      "gold_cypher": "MATCH (c:CVE)-[:AFFECTS]->(:Product {product_id: \"p:citrix:netscaleradc\"}) RETURN DISTINCT c.cve_id AS name",
+      "gold_quality": "exact (graph)"
+    },
+    {
+      "id": "A3-2",
+      "type": "A",
+      "question": "Which CVEs affect Adobe Commerce?",
+      "answer_type": "cves",
+      "gold": [
+        {
+          "name": "CVE-2026-71362",
+          "aliases": []
+        },
+        {
+          "name": "CVE-2026-75650",
+          "aliases": []
+        }
+      ],
+      "gold_cypher": "MATCH (c:CVE)-[:AFFECTS]->(:Product {product_id: \"p:adobe:commerce\"}) RETURN DISTINCT c.cve_id AS name",
+      "gold_quality": "exact (graph)"
+    },
+    {
+      "id": "B1-1",
+      "type": "B",
+      "question": "Which products are affected by the CVEs that are chained with CVE-2026-102489?",
+      "answer_type": "products",
+      "gold": [
+        {
+          "name": "Zammad",
+          "aliases": [
+            "Zammad"
+          ]
+        }
+      ],
+      "gold_cypher": "MATCH (:CVE {cve_id: \"CVE-2026-102489\"})-[:CHAINED_WITH]-(:CVE)-[:AFFECTS]->(p:Product) RETURN DISTINCT p.name AS name",
+      "gold_quality": "exact (graph)"
+    },
+    {
+      "id": "B1-2",
+      "type": "B",
+      "question": "Which products are affected by the CVEs that are chained with CVE-2026-105133?",
+      "answer_type": "products",
+      "gold": [
+        {
+          "name": "Ahsay AhsayCBS",
+          "aliases": [
+            "Ahsay AhsayCBS"
+          ]
+        }
+      ],
+      "gold_cypher": "MATCH (:CVE {cve_id: \"CVE-2026-105133\"})-[:CHAINED_WITH]-(:CVE)-[:AFFECTS]->(p:Product) RETURN DISTINCT p.name AS name",
+      "gold_quality": "exact (graph)"
+    },
+    {
+      "id": "B2-1",
+      "type": "B",
+      "question": "Which vendors have products affected by a CVE with the weakness \"Remote Code Execution\"?",
+      "answer_type": "vendors",
+      "gold": [
+        {
+          "name": "Citrix",
+          "aliases": [
+            "Citrix"
+          ]
+        },
+        {
+          "name": "F5",
+          "aliases": [
+            "F5"
+          ]
+        },
+        {
+          "name": "ONLYOFFICE",
+          "aliases": [
+            "ONLYOFFICE"
+          ]
+        },
+        {
+          "name": "Palo Alto Networks",
+          "aliases": [
+            "Palo Alto Networks"
+          ]
+        },
+        {
+          "name": "WSO2",
+          "aliases": [
+            "WSO2"
+          ]
+        },
+        {
+          "name": "Zammad GmbH",
+          "aliases": [
+            "Zammad GmbH"
+          ]
+        }
+      ],
+      "gold_cypher": "MATCH (:Weakness {weakness_id: \"remote code execution\"})<-[:HAS_WEAKNESS]-(:CVE)-[:AFFECTS]->(:Product)<-[:PRODUCES]-(v:Vendor) RETURN DISTINCT v.name AS name",
+      "gold_quality": "exact (graph)"
+    },
+    {
+      "id": "B2-2",
+      "type": "B",
+      "question": "Which vendors have products affected by a CVE with the weakness \"authentication bypass\"?",
+      "answer_type": "vendors",
+      "gold": [
+        {
+          "name": "BeyondTrust",
+          "aliases": [
+            "BeyondTrust"
+          ]
+        },
+        {
+          "name": "Cisco",
+          "aliases": [
+            "Cisco"
+          ]
+        },
+        {
+          "name": "Citrix",
+          "aliases": [
+            "Citrix"
+          ]
+        },
+        {
+          "name": "Fortinet",
+          "aliases": [
+            "Fortinet"
+          ]
+        },
+        {
+          "name": "Ivanti",
+          "aliases": [
+            "Ivanti"
+          ]
+        }
+      ],
+      "gold_cypher": "MATCH (:Weakness {weakness_id: \"authentication bypass\"})<-[:HAS_WEAKNESS]-(:CVE)-[:AFFECTS]->(:Product)<-[:PRODUCES]-(v:Vendor) RETURN DISTINCT v.name AS name",
+      "gold_quality": "exact (graph)"
+    },
+    {
+      "id": "B3-1",
+      "type": "B",
+      "question": "Which other products made by the same vendor as Bamboo Data Center are affected by CVEs in the corpus?",
+      "answer_type": "products",
+      "gold": [
+        {
+          "name": "Bitbucket Data Center",
+          "aliases": [
+            "Bitbucket Data Center"
+          ]
+        },
+        {
+          "name": "Confluence Data Center",
+          "aliases": [
+            "Confluence Data Center"
+          ]
+        },
+        {
+          "name": "Crowd Data Center",
+          "aliases": [
+            "Crowd Data Center"
+          ]
+        },
+        {
+          "name": "Crucible",
+          "aliases": [
+            "Crucible"
+          ]
+        },
+        {
+          "name": "Fisheye",
+          "aliases": [
+            "Fisheye"
+          ]
+        },
+        {
+          "name": "Jira Service Management Data Center",
+          "aliases": [
+            "Jira Service Management Data Center"
+          ]
+        },
+        {
+          "name": "Jira Software Data Center",
+          "aliases": [
+            "Jira Software Data Center"
+          ]
+        }
+      ],
+      "gold_cypher": "MATCH (:Product {product_id: \"p:atlassian:bamboodatacenter\"})<-[:PRODUCES]-(:Vendor)-[:PRODUCES]->(o:Product) WHERE o.product_id <> \"p:atlassian:bamboodatacenter\" RETURN DISTINCT o.name AS name",
+      "gold_quality": "exact (graph)"
+    },
+    {
+      "id": "B3-2",
+      "type": "B",
+      "question": "Which other products made by the same vendor as FortiMail are affected by CVEs in the corpus?",
+      "answer_type": "products",
+      "gold": [
+        {
+          "name": "FortiOS",
+          "aliases": [
+            "FortiOS"
+          ]
+        },
+        {
+          "name": "FortiPAM",
+          "aliases": [
+            "FortiPAM"
+          ]
+        },
+        {
+          "name": "FortiProxy",
+          "aliases": [
+            "FortiProxy"
+          ]
+        },
+        {
+          "name": "FortiSwitchManager",
+          "aliases": [
+            "FortiSwitchManager"
+          ]
+        }
+      ],
+      "gold_cypher": "MATCH (:Product {product_id: \"p:fortinet:fortimail\"})<-[:PRODUCES]-(:Vendor)-[:PRODUCES]->(o:Product) WHERE o.product_id <> \"p:fortinet:fortimail\" RETURN DISTINCT o.name AS name",
+      "gold_quality": "exact (graph)"
+    },
+    {
+      "id": "C1-1",
+      "type": "C",
+      "question": "Which vendor has the most CVEs in the corpus?",
+      "answer_type": "vendors",
+      "gold": [
+        {
+          "name": "Cisco",
+          "aliases": [
+            "Cisco"
+          ]
+        }
+      ],
+      "gold_cypher": "MATCH (v:Vendor)-[:PRODUCES]->(:Product)<-[:AFFECTS]-(c:CVE) WITH v, count(DISTINCT c) AS n WITH max(n) AS m, collect([v.name, n]) AS xs UNWIND xs AS x WITH x, m WHERE x[1] = m RETURN x[0] AS name",
+      "gold_quality": "exact (graph)"
+    },
+    {
+      "id": "C2-1",
+      "type": "C",
+      "question": "How many CVEs affect Adobe products?",
+      "answer_type": "number",
+      "gold": {
+        "value": 2
+      },
+      "gold_cypher": "MATCH (:Vendor {vendor_id: \"v:adobe\"})-[:PRODUCES]->(:Product)<-[:AFFECTS]-(c:CVE) RETURN count(DISTINCT c) AS n",
+      "gold_quality": "exact (graph)"
+    },
+    {
+      "id": "C2-2",
+      "type": "C",
+      "question": "How many CVEs affect Plex products?",
+      "answer_type": "number",
+      "gold": {
+        "value": 4
+      },
+      "gold_cypher": "MATCH (:Vendor {vendor_id: \"v:plex\"})-[:PRODUCES]->(:Product)<-[:AFFECTS]-(c:CVE) RETURN count(DISTINCT c) AS n",
+      "gold_quality": "exact (graph)"
+    },
+    {
+      "id": "C3-1",
+      "type": "C",
+      "question": "How many CVEs in the corpus are part of an exploit chain?",
+      "answer_type": "number",
+      "gold": {
+        "value": 9
+      },
+      "gold_cypher": "MATCH (c:CVE) WHERE c.in_corpus AND (c)-[:CHAINED_WITH]-() RETURN count(c) AS n",
+      "gold_quality": "exact (graph)"
+    },
+    {
+      "id": "C4-1",
+      "type": "C",
+      "question": "Which products are affected by more than one CVE?",
+      "answer_type": "products",
+      "gold": [
+        {
+          "name": "Adobe Commerce",
+          "aliases": [
+            "Adobe Commerce"
+          ]
+        },
+        {
+          "name": "Ahsay AhsayCBS",
+          "aliases": [
+            "Ahsay AhsayCBS"
+          ]
+        },
+        {
+          "name": "VeloCloud Orchestrator",
+          "aliases": [
+            "VeloCloud Orchestrator"
+          ]
+        },
+        {
+          "name": "Secure Email Gateway",
+          "aliases": [
+            "Secure Email Gateway"
+          ]
+        },
+        {
+          "name": "NetScaler ADC",
+          "aliases": [
+            "NetScaler ADC"
+          ]
+        },
+        {
+          "name": "NetScaler Gateway",
+          "aliases": [
+            "NetScaler Gateway"
+          ]
+        },
+        {
+          "name": "FortiOS",
+          "aliases": [
+            "FortiOS"
+          ]
+        },
+        {
+          "name": "FortiSwitchManager",
+          "aliases": [
+            "FortiSwitchManager"
+          ]
+        },
+        {
+          "name": "Artifactory",
+          "aliases": [
+            "Artifactory"
+          ]
+        },
+        {
+          "name": "RouterOS",
+          "aliases": [
+            "RouterOS"
+          ]
+        },
+        {
+          "name": "Plex Media Server",
+          "aliases": [
+            "Plex Media Server"
+          ]
+        },
+        {
+          "name": "Linux kernel",
+          "aliases": [
+            "Linux kernel"
+          ]
+        },
+        {
+          "name": "Zammad",
+          "aliases": [
+            "Zammad"
+          ]
+        }
+      ],
+      "gold_cypher": "MATCH (c:CVE)-[:AFFECTS]->(p:Product) WITH p, count(DISTINCT c) AS n WHERE n > 1 RETURN p.name AS name",
+      "gold_quality": "exact (graph)"
+    },
+    {
+      "id": "C5-1",
+      "type": "C",
+      "question": "How many different vendors are affected by CVEs in the corpus?",
+      "answer_type": "number",
+      "gold": {
+        "value": 31
+      },
+      "gold_cypher": "MATCH (v:Vendor)-[:PRODUCES]->(:Product)<-[:AFFECTS]-(:CVE) RETURN count(DISTINCT v) AS n",
+      "gold_quality": "exact (graph)"
+    },
+    {
+      "id": "D1-1",
+      "type": "D",
+      "question": "Which vulnerabilities allow an attacker to read or access files they should not be able to reach?",
+      "answer_type": "cves",
+      "gold": [
+        {
+          "name": "CVE-2015-3306",
+          "aliases": []
+        },
+        {
+          "name": "CVE-2021-3199",
+          "aliases": []
+        },
+        {
+          "name": "CVE-2025-61624",
+          "aliases": []
+        },
+        {
+          "name": "CVE-2026-104286",
+          "aliases": []
+        },
+        {
+          "name": "CVE-2026-21589",
+          "aliases": []
+        },
+        {
+          "name": "CVE-2026-5430",
+          "aliases": []
+        },
+        {
+          "name": "CVE-2026-76519",
+          "aliases": []
+        },
+        {
+          "name": "CVE-2026-85706",
+          "aliases": []
+        },
+        {
+          "name": "CVE-2026-93616",
+          "aliases": []
+        },
+        {
+          "name": "CVE-2026-96656",
+          "aliases": []
+        }
+      ],
+      "gold_cypher": "MATCH (c:CVE) WHERE c.in_corpus AND any(k IN [\"path traversal\", \"directory traversal\", \"arbitrary file\", \"read arbitrary files\", \"files or directories accessible\"] WHERE toLower(c.text) CONTAINS k) RETURN c.cve_id AS name",
+      "gold_quality": "silver (keyword match on the CVE text)"
+    },
+    {
+      "id": "D1-2",
+      "type": "D",
+      "question": "Which vulnerabilities let someone get past the login or authentication step?",
+      "answer_type": "cves",
+      "gold": [
+        {
+          "name": "CVE-2026-102764",
+          "aliases": []
+        },
+        {
+          "name": "CVE-2026-104935",
+          "aliases": []
+        },
+        {
+          "name": "CVE-2026-105133",
+          "aliases": []
+        },
+        {
+          "name": "CVE-2026-19490",
+          "aliases": []
+        },
+        {
+          "name": "CVE-2026-20079",
+          "aliases": []
+        },
+        {
+          "name": "CVE-2026-42018",
+          "aliases": []
+        },
+        {
+          "name": "CVE-2026-67277",
+          "aliases": []
+        },
+        {
+          "name": "CVE-2026-76460",
+          "aliases": []
+        },
+        {
+          "name": "CVE-2026-76504",
+          "aliases": []
+        },
+        {
+          "name": "CVE-2026-85706",
+          "aliases": []
+        }
+      ],
+      "gold_cypher": "MATCH (c:CVE) WHERE c.in_corpus AND any(k IN [\"authentication bypass\", \"bypass authentication\", \"improper authentication\", \"missing authentication\"] WHERE toLower(c.text) CONTAINS k) RETURN c.cve_id AS name",
+      "gold_quality": "silver (keyword match on the CVE text)"
+    },
+    {
+      "id": "D1-3",
+      "type": "D",
+      "question": "Which vulnerabilities could let an attacker remotely run their own code or commands on the system?",
+      "answer_type": "cves",
+      "gold": [
+        {
+          "name": "CVE-2016-3081",
+          "aliases": []
+        },
+        {
+          "name": "CVE-2021-3199",
+          "aliases": []
+        },
+        {
+          "name": "CVE-2023-22894",
+          "aliases": []
+        },
+        {
+          "name": "CVE-2026-0322",
+          "aliases": []
+        },
+        {
+          "name": "CVE-2026-102489",
+          "aliases": []
+        },
+        {
+          "name": "CVE-2026-104935",
+          "aliases": []
+        },
+        {
+          "name": "CVE-2026-105134",
+          "aliases": []
+        },
+        {
+          "name": "CVE-2026-106931",
+          "aliases": []
+        },
+        {
+          "name": "CVE-2026-110936",
+          "aliases": []
+        },
+        {
+          "name": "CVE-2026-5430",
+          "aliases": []
+        },
+        {
+          "name": "CVE-2026-75650",
+          "aliases": []
+        },
+        {
+          "name": "CVE-2026-76461",
+          "aliases": []
+        },
+        {
+          "name": "CVE-2026-85102",
+          "aliases": []
+        },
+        {
+          "name": "CVE-2026-86218",
+          "aliases": []
+        },
+        {
+          "name": "CVE-2026-86950",
+          "aliases": []
+        },
+        {
+          "name": "CVE-2026-87491",
+          "aliases": []
+        },
+        {
+          "name": "CVE-2026-87902",
+          "aliases": []
+        },
+        {
+          "name": "CVE-2026-88771",
+          "aliases": []
+        },
+        {
+          "name": "CVE-2026-88772",
+          "aliases": []
+        },
+        {
+          "name": "CVE-2026-94127",
+          "aliases": []
+        },
+        {
+          "name": "CVE-2026-96951",
+          "aliases": []
+        }
+      ],
+      "gold_cypher": "MATCH (c:CVE) WHERE c.in_corpus AND any(k IN [\"remote code execution\", \"arbitrary code\", \"command injection\", \"execute arbitrary commands\"] WHERE toLower(c.text) CONTAINS k) RETURN c.cve_id AS name",
+      "gold_quality": "silver (keyword match on the CVE text)"
+    },
+    {
+      "id": "D1-4",
+      "type": "D",
+      "question": "Which vulnerabilities can crash a service or make it unavailable?",
+      "answer_type": "cves",
+      "gold": [
+        {
+          "name": "CVE-2015-5477",
+          "aliases": []
+        },
+        {
+          "name": "CVE-2026-67277",
+          "aliases": []
+        },
+        {
+          "name": "CVE-2026-88772",
+          "aliases": []
+        },
+        {
+          "name": "CVE-2026-88779",
+          "aliases": []
+        }
+      ],
+      "gold_cypher": "MATCH (c:CVE) WHERE c.in_corpus AND any(k IN [\"denial of service\"] WHERE toLower(c.text) CONTAINS k) RETURN c.cve_id AS name",
+      "gold_quality": "silver (keyword match on the CVE text)"
+    }
+  ]
+}

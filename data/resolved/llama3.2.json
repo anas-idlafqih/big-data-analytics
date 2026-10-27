@@ -1,0 +1,1843 @@
+{
+  "stats": {
+    "documents": 60,
+    "product_mentions_raw": 81,
+    "product_mentions_after_abbreviation_merge": 80,
+    "distinct_raw_product_strings": 61,
+    "canonical_products": 59,
+    "canonical_vendors": 31,
+    "vendorless_products": 4,
+    "merges": [
+      {
+        "type": "abbreviation (same document)",
+        "cve": "CVE-2026-104935",
+        "merged": "ICS",
+        "into": "Ivanti Connect Secure"
+      }
+    ]
+  },
+  "vendors": [
+    {
+      "id": "v:acronis",
+      "name": "Acronis",
+      "aliases": [
+        "Acronis"
+      ]
+    },
+    {
+      "id": "v:adobe",
+      "name": "Adobe",
+      "aliases": [
+        "Adobe"
+      ]
+    },
+    {
+      "id": "v:ahsay",
+      "name": "Ahsay",
+      "aliases": [
+        "Ahsay"
+      ]
+    },
+    {
+      "id": "v:apache",
+      "name": "Apache",
+      "aliases": [
+        "Apache"
+      ]
+    },
+    {
+      "id": "v:apple",
+      "name": "Apple",
+      "aliases": [
+        "Apple"
+      ]
+    },
+    {
+      "id": "v:arista",
+      "name": "Arista",
+      "aliases": [
+        "Arista"
+      ]
+    },
+    {
+      "id": "v:atlassian",
+      "name": "Atlassian",
+      "aliases": [
+        "Atlassian"
+      ]
+    },
+    {
+      "id": "v:beyondtrust",
+      "name": "BeyondTrust",
+      "aliases": [
+        "BeyondTrust"
+      ]
+    },
+    {
+      "id": "v:checkpoint",
+      "name": "Check Point",
+      "aliases": [
+        "Check Point"
+      ]
+    },
+    {
+      "id": "v:cisco",
+      "name": "Cisco",
+      "aliases": [
+        "Cisco"
+      ]
+    },
+    {
+      "id": "v:citrix",
+      "name": "Citrix",
+      "aliases": [
+        "Citrix"
+      ]
+    },
+    {
+      "id": "v:connectwise",
+      "name": "ConnectWise",
+      "aliases": [
+        "ConnectWise"
+      ]
+    },
+    {
+      "id": "v:egsecuresolutions",
+      "name": "EG Secure Solutions",
+      "aliases": [
+        "EG Secure Solutions"
+      ]
+    },
+    {
+      "id": "v:f5",
+      "name": "F5",
+      "aliases": [
+        "F5"
+      ]
+    },
+    {
+      "id": "v:fortinet",
+      "name": "Fortinet",
+      "aliases": [
+        "Fortinet"
+      ]
+    },
+    {
+      "id": "v:gitlab",
+      "name": "GitLab",
+      "aliases": [
+        "GitLab"
+      ]
+    },
+    {
+      "id": "v:google",
+      "name": "Google",
+      "aliases": [
+        "Google"
+      ]
+    },
+    {
+      "id": "v:isc",
+      "name": "ISC",
+      "aliases": [
+        "ISC"
+      ]
+    },
+    {
+      "id": "v:ivanti",
+      "name": "Ivanti",
+      "aliases": [
+        "Ivanti"
+      ]
+    },
+    {
+      "id": "v:jfrog",
+      "name": "JFrog",
+      "aliases": [
+        "JFrog"
+      ]
+    },
+    {
+      "id": "v:microsoft",
+      "name": "Microsoft",
+      "aliases": [
+        "Microsoft"
+      ]
+    },
+    {
+      "id": "v:mikrotik",
+      "name": "MikroTik",
+      "aliases": [
+        "MikroTik",
+        "Mikrotik"
+      ]
+    },
+    {
+      "id": "v:nable",
+      "name": "N-able",
+      "aliases": [
+        "N-able"
+      ]
+    },
+    {
+      "id": "v:onlyoffice",
+      "name": "ONLYOFFICE",
+      "aliases": [
+        "ONLYOFFICE"
+      ]
+    },
+    {
+      "id": "v:paloaltonetworks",
+      "name": "Palo Alto Networks",
+      "aliases": [
+        "Palo Alto Networks"
+      ]
+    },
+    {
+      "id": "v:plex",
+      "name": "Plex",
+      "aliases": [
+        "Plex"
+      ]
+    },
+    {
+      "id": "v:proftpd",
+      "name": "ProFTPD",
+      "aliases": [
+        "ProFTPD"
+      ]
+    },
+    {
+      "id": "v:siemens",
+      "name": "Siemens",
+      "aliases": [
+        "Siemens"
+      ]
+    },
+    {
+      "id": "v:wso2",
+      "name": "WSO2",
+      "aliases": [
+        "WSO2"
+      ]
+    },
+    {
+      "id": "v:zammad",
+      "name": "Zammad GmbH",
+      "aliases": [
+        "Zammad GmbH"
+      ]
+    },
+    {
+      "id": "v:zyxel",
+      "name": "Zyxel",
+      "aliases": [
+        "Zyxel"
+      ]
+    }
+  ],
+  "products": [
+    {
+      "id": "p:unknown:acronisbackuppluginfordirectadmin",
+      "name": "Acronis Backup plugin for DirectAdmin",
+      "vendor_id": null,
+      "aliases": [
+        "Acronis Backup plugin for DirectAdmin"
+      ]
+    },
+    {
+      "id": "p:unknown:linuxkernel",
+      "name": "Linux kernel",
+      "vendor_id": null,
+      "aliases": [
+        "Linux kernel"
+      ]
+    },
+    {
+      "id": "p:unknown:strapi",
+      "name": "Strapi",
+      "vendor_id": null,
+      "aliases": [
+        "Strapi"
+      ]
+    },
+    {
+      "id": "p:unknown:wordpresscore",
+      "name": "WordPress Core",
+      "vendor_id": null,
+      "aliases": [
+        "WordPress Core"
+      ]
+    },
+    {
+      "id": "p:acronis:backupextensionforplesk",
+      "name": "Acronis Backup extension for Plesk",
+      "vendor_id": "v:acronis",
+      "aliases": [
+        "Acronis Backup extension for Plesk"
+      ]
+    },
+    {
+      "id": "p:acronis:backuppluginforcpanelwhm",
+      "name": "Acronis Backup plugin for cPanel & WHM",
+      "vendor_id": "v:acronis",
+      "aliases": [
+        "Acronis Backup plugin for cPanel & WHM"
+      ]
+    },
+    {
+      "id": "p:adobe:commerce",
+      "name": "Adobe Commerce",
+      "vendor_id": "v:adobe",
+      "aliases": [
+        "Adobe Commerce"
+      ]
+    },
+    {
+      "id": "p:adobe:magentoopensource",
+      "name": "Magento Open Source",
+      "vendor_id": "v:adobe",
+      "aliases": [
+        "Magento Open Source"
+      ]
+    },
+    {
+      "id": "p:ahsay:ahsaycbs",
+      "name": "Ahsay AhsayCBS",
+      "vendor_id": "v:ahsay",
+      "aliases": [
+        "Ahsay AhsayCBS"
+      ]
+    },
+    {
+      "id": "p:apache:struts",
+      "name": "Apache Struts",
+      "vendor_id": "v:apache",
+      "aliases": [
+        "Apache Struts"
+      ]
+    },
+    {
+      "id": "p:apple:ios",
+      "name": "iOS",
+      "vendor_id": "v:apple",
+      "aliases": [
+        "iOS"
+      ]
+    },
+    {
+      "id": "p:apple:ipados",
+      "name": "iPadOS",
+      "vendor_id": "v:apple",
+      "aliases": [
+        "iPadOS"
+      ]
+    },
+    {
+      "id": "p:apple:macos",
+      "name": "macOS",
+      "vendor_id": "v:apple",
+      "aliases": [
+        "macOS"
+      ]
+    },
+    {
+      "id": "p:arista:velocloudorchestrator",
+      "name": "VeloCloud Orchestrator",
+      "vendor_id": "v:arista",
+      "aliases": [
+        "VeloCloud Orchestrator"
+      ]
+    },
+    {
+      "id": "p:atlassian:bamboodatacenter",
+      "name": "Bamboo Data Center",
+      "vendor_id": "v:atlassian",
+      "aliases": [
+        "Bamboo Data Center"
+      ]
+    },
+    {
+      "id": "p:atlassian:bitbucketdatacenter",
+      "name": "Bitbucket Data Center",
+      "vendor_id": "v:atlassian",
+      "aliases": [
+        "Bitbucket Data Center"
+      ]
+    },
+    {
+      "id": "p:atlassian:confluencedatacenter",
+      "name": "Confluence Data Center",
+      "vendor_id": "v:atlassian",
+      "aliases": [
+        "Confluence Data Center"
+      ]
+    },
+    {
+      "id": "p:atlassian:crowddatacenter",
+      "name": "Crowd Data Center",
+      "vendor_id": "v:atlassian",
+      "aliases": [
+        "Crowd Data Center"
+      ]
+    },
+    {
+      "id": "p:atlassian:crucible",
+      "name": "Crucible",
+      "vendor_id": "v:atlassian",
+      "aliases": [
+        "Crucible"
+      ]
+    },
+    {
+      "id": "p:atlassian:fisheye",
+      "name": "Fisheye",
+      "vendor_id": "v:atlassian",
+      "aliases": [
+        "Fisheye"
+      ]
+    },
+    {
+      "id": "p:atlassian:jiraservicemanagementdatacenter",
+      "name": "Jira Service Management Data Center",
+      "vendor_id": "v:atlassian",
+      "aliases": [
+        "Jira Service Management Data Center"
+      ]
+    },
+    {
+      "id": "p:atlassian:jirasoftwaredatacenter",
+      "name": "Jira Software Data Center",
+      "vendor_id": "v:atlassian",
+      "aliases": [
+        "Jira Software Data Center"
+      ]
+    },
+    {
+      "id": "p:beyondtrust:remotesupport",
+      "name": "Remote Support",
+      "vendor_id": "v:beyondtrust",
+      "aliases": [
+        "Remote Support"
+      ]
+    },
+    {
+      "id": "p:checkpoint:securitygateway",
+      "name": "Security Gateway",
+      "vendor_id": "v:checkpoint",
+      "aliases": [
+        "Security Gateway"
+      ]
+    },
+    {
+      "id": "p:checkpoint:securitymanagementserver",
+      "name": "Security Management Server",
+      "vendor_id": "v:checkpoint",
+      "aliases": [
+        "Security Management Server"
+      ]
+    },
+    {
+      "id": "p:cisco:catalystsdwanmanager",
+      "name": "Cisco Catalyst SD-WAN Manager",
+      "vendor_id": "v:cisco",
+      "aliases": [
+        "Cisco Catalyst SD-WAN Manager"
+      ]
+    },
+    {
+      "id": "p:cisco:ise",
+      "name": "ISE",
+      "vendor_id": "v:cisco",
+      "aliases": [
+        "ISE"
+      ]
+    },
+    {
+      "id": "p:cisco:secureemailgateway",
+      "name": "Secure Email Gateway",
+      "vendor_id": "v:cisco",
+      "aliases": [
+        "Secure Email Gateway"
+      ]
+    },
+    {
+      "id": "p:cisco:securefirewallmanagementcenterfmcsoftware",
+      "name": "Cisco Secure Firewall Management Center (FMC) Software",
+      "vendor_id": "v:cisco",
+      "aliases": [
+        "Cisco Secure Firewall Management Center (FMC) Software"
+      ]
+    },
+    {
+      "id": "p:citrix:netscaleradc",
+      "name": "NetScaler ADC",
+      "vendor_id": "v:citrix",
+      "aliases": [
+        "NetScaler ADC"
+      ]
+    },
+    {
+      "id": "p:citrix:netscalergateway",
+      "name": "NetScaler Gateway",
+      "vendor_id": "v:citrix",
+      "aliases": [
+        "NetScaler Gateway"
+      ]
+    },
+    {
+      "id": "p:connectwise:screenconnect",
+      "name": "ScreenConnect",
+      "vendor_id": "v:connectwise",
+      "aliases": [
+        "ScreenConnect"
+      ]
+    },
+    {
+      "id": "p:egsecuresolutions:siteguardserveredition",
+      "name": "SiteGuard Server Edition",
+      "vendor_id": "v:egsecuresolutions",
+      "aliases": [
+        "SiteGuard Server Edition"
+      ]
+    },
+    {
+      "id": "p:f5:bigipapm",
+      "name": "BIG-IP APM",
+      "vendor_id": "v:f5",
+      "aliases": [
+        "BIG-IP APM"
+      ]
+    },
+    {
+      "id": "p:fortinet:fortimail",
+      "name": "FortiMail",
+      "vendor_id": "v:fortinet",
+      "aliases": [
+        "FortiMail"
+      ]
+    },
+    {
+      "id": "p:fortinet:fortios",
+      "name": "FortiOS",
+      "vendor_id": "v:fortinet",
+      "aliases": [
+        "FortiOS"
+      ]
+    },
+    {
+      "id": "p:fortinet:fortipam",
+      "name": "FortiPAM",
+      "vendor_id": "v:fortinet",
+      "aliases": [
+        "FortiPAM"
+      ]
+    },
+    {
+      "id": "p:fortinet:fortiproxy",
+      "name": "FortiProxy",
+      "vendor_id": "v:fortinet",
+      "aliases": [
+        "FortiProxy"
+      ]
+    },
+    {
+      "id": "p:fortinet:fortiswitchmanager",
+      "name": "FortiSwitchManager",
+      "vendor_id": "v:fortinet",
+      "aliases": [
+        "FortiSwitchManager"
+      ]
+    },
+    {
+      "id": "p:gitlab:ceee",
+      "name": "GitLab CE/EE",
+      "vendor_id": "v:gitlab",
+      "aliases": [
+        "GitLab CE/EE"
+      ]
+    },
+    {
+      "id": "p:google:cellularmodem",
+      "name": "Cellular Modem",
+      "vendor_id": "v:google",
+      "aliases": [
+        "Cellular Modem"
+      ]
+    },
+    {
+      "id": "p:google:chrome",
+      "name": "Google Chrome",
+      "vendor_id": "v:google",
+      "aliases": [
+        "Google Chrome"
+      ]
+    },
+    {
+      "id": "p:isc:bind",
+      "name": "ISC BIND",
+      "vendor_id": "v:isc",
+      "aliases": [
+        "ISC BIND"
+      ]
+    },
+    {
+      "id": "p:ivanti:connectsecure",
+      "name": "Ivanti Connect Secure",
+      "vendor_id": "v:ivanti",
+      "aliases": [
+        "ICS",
+        "Ivanti Connect Secure"
+      ]
+    },
+    {
+      "id": "p:jfrog:artifactory",
+      "name": "Artifactory",
+      "vendor_id": "v:jfrog",
+      "aliases": [
+        "Artifactory"
+      ]
+    },
+    {
+      "id": "p:microsoft:sharepoint",
+      "name": "Microsoft SharePoint",
+      "vendor_id": "v:microsoft",
+      "aliases": [
+        "Microsoft SharePoint"
+      ]
+    },
+    {
+      "id": "p:microsoft:windows",
+      "name": "Windows",
+      "vendor_id": "v:microsoft",
+      "aliases": [
+        "Windows"
+      ]
+    },
+    {
+      "id": "p:microsoft:windowsshell",
+      "name": "Windows Shell",
+      "vendor_id": "v:microsoft",
+      "aliases": [
+        "Windows Shell"
+      ]
+    },
+    {
+      "id": "p:microsoft:windowsupdatestack",
+      "name": "Windows Update Stack",
+      "vendor_id": "v:microsoft",
+      "aliases": [
+        "Windows Update Stack"
+      ]
+    },
+    {
+      "id": "p:mikrotik:routeros",
+      "name": "RouterOS",
+      "vendor_id": "v:mikrotik",
+      "aliases": [
+        "RouterOS"
+      ]
+    },
+    {
+      "id": "p:nable:ncentral",
+      "name": "N-central",
+      "vendor_id": "v:nable",
+      "aliases": [
+        "N-central"
+      ]
+    },
+    {
+      "id": "p:onlyoffice:documentserver",
+      "name": "Document Server",
+      "vendor_id": "v:onlyoffice",
+      "aliases": [
+        "Document Server"
+      ]
+    },
+    {
+      "id": "p:paloaltonetworks:panos",
+      "name": "PAN-OS",
+      "vendor_id": "v:paloaltonetworks",
+      "aliases": [
+        "PAN-OS"
+      ]
+    },
+    {
+      "id": "p:plex:mediaserver",
+      "name": "Plex Media Server",
+      "vendor_id": "v:plex",
+      "aliases": [
+        "Plex Media Server"
+      ]
+    },
+    {
+      "id": "p:proftpd:proftpd",
+      "name": "ProFTPD",
+      "vendor_id": "v:proftpd",
+      "aliases": [
+        "ProFTPD"
+      ]
+    },
+    {
+      "id": "p:siemens:softwarecenter",
+      "name": "Software Center",
+      "vendor_id": "v:siemens",
+      "aliases": [
+        "Software Center"
+      ]
+    },
+    {
+      "id": "p:wso2:apicontrolplane",
+      "name": "WSO2 API Control Plane",
+      "vendor_id": "v:wso2",
+      "aliases": [
+        "WSO2 API Control Plane"
+      ]
+    },
+    {
+      "id": "p:zammad:zammad",
+      "name": "Zammad",
+      "vendor_id": "v:zammad",
+      "aliases": [
+        "Zammad"
+      ]
+    },
+    {
+      "id": "p:zyxel:gs190048hpv2",
+      "name": "GS1900-48HPv2",
+      "vendor_id": "v:zyxel",
+      "aliases": [
+        "GS1900-48HPv2"
+      ]
+    }
+  ],
+  "affects": [
+    {
+      "cve": "CVE-2015-3306",
+      "product_id": "p:proftpd:proftpd",
+      "versions_raw": [
+        "1.3.5"
+      ]
+    },
+    {
+      "cve": "CVE-2015-5477",
+      "product_id": "p:isc:bind",
+      "versions_raw": [
+        "9.x before 9.9.7-P2",
+        "9.10.x before 9.10.2-P3"
+      ]
+    },
+    {
+      "cve": "CVE-2016-3081",
+      "product_id": "p:apache:struts",
+      "versions_raw": [
+        "2.3.19 to 2.3.20.2",
+        "2.3.21 to 2.3.24.1",
+        "2.3.25 to 2.3.28"
+      ]
+    },
+    {
+      "cve": "CVE-2021-3199",
+      "product_id": "p:onlyoffice:documentserver",
+      "versions_raw": [
+        "before 5.6.3"
+      ]
+    },
+    {
+      "cve": "CVE-2023-22894",
+      "product_id": "p:unknown:strapi",
+      "versions_raw": [
+        "<=4.7.1"
+      ]
+    },
+    {
+      "cve": "CVE-2025-25249",
+      "product_id": "p:fortinet:fortios",
+      "versions_raw": [
+        "7.6.0 through 7.6.3",
+        "7.4.0 through 7.4.8",
+        "7.2.0 through 7.2.11",
+        "7.0.0 through 7.0.17",
+        "6.4",
+        "[all versions]",
+        "7.2.0 through 7.2.6",
+        "7.0.0 through 7.0.5"
+      ]
+    },
+    {
+      "cve": "CVE-2025-25249",
+      "product_id": "p:fortinet:fortiswitchmanager",
+      "versions_raw": [
+        "7.2.0 through 7.2.6",
+        "7.0.0 through 7.0.5"
+      ]
+    },
+    {
+      "cve": "CVE-2025-39682",
+      "product_id": "p:unknown:linuxkernel",
+      "versions_raw": []
+    },
+    {
+      "cve": "CVE-2025-39964",
+      "product_id": "p:unknown:linuxkernel",
+      "versions_raw": []
+    },
+    {
+      "cve": "CVE-2025-61624",
+      "product_id": "p:fortinet:fortios",
+      "versions_raw": [
+        "7.6.0 through 7.6.4",
+        "7.4.0 through 7.4.9",
+        "7.2 all versions",
+        "7.0 all versions",
+        "6.4 all versions"
+      ]
+    },
+    {
+      "cve": "CVE-2025-61624",
+      "product_id": "p:fortinet:fortipam",
+      "versions_raw": [
+        "1.7.0",
+        "1.6 all versions",
+        "1.5 all versions",
+        "1.4 all versions",
+        "1.3 all versions",
+        "1.2 all versions",
+        "1.1 all versions",
+        "1.0 all versions"
+      ]
+    },
+    {
+      "cve": "CVE-2025-61624",
+      "product_id": "p:fortinet:fortiproxy",
+      "versions_raw": [
+        "7.6.0 through 7.6.4",
+        "7.4.0 through 7.4.11",
+        "7.2 all versions",
+        "7.0 all versions"
+      ]
+    },
+    {
+      "cve": "CVE-2025-61624",
+      "product_id": "p:fortinet:fortiswitchmanager",
+      "versions_raw": [
+        "7.2.0 through 7.2.7",
+        "7.0.0 through 7.0.6"
+      ]
+    },
+    {
+      "cve": "CVE-2026-0322",
+      "product_id": "p:paloaltonetworks:panos",
+      "versions_raw": []
+    },
+    {
+      "cve": "CVE-2026-102489",
+      "product_id": "p:zammad:zammad",
+      "versions_raw": [
+        "6.3.0 to 6.5.4",
+        "7.0.0 to 7.1.3"
+      ]
+    },
+    {
+      "cve": "CVE-2026-102490",
+      "product_id": "p:zammad:zammad",
+      "versions_raw": [
+        "all versions",
+        "latest alpha"
+      ]
+    },
+    {
+      "cve": "CVE-2026-102764",
+      "product_id": "p:beyondtrust:remotesupport",
+      "versions_raw": []
+    },
+    {
+      "cve": "CVE-2026-104286",
+      "product_id": "p:fortinet:fortimail",
+      "versions_raw": [
+        "8.0.0 through 8.0.1",
+        "7.6.0 through 7.6.6",
+        "7.4.0 through 7.4.8",
+        "7.2.0 through 7.2.9"
+      ]
+    },
+    {
+      "cve": "CVE-2026-104935",
+      "product_id": "p:ivanti:connectsecure",
+      "versions_raw": [
+        "before 25.1.3.0"
+      ]
+    },
+    {
+      "cve": "CVE-2026-105133",
+      "product_id": "p:ahsay:ahsaycbs",
+      "versions_raw": [
+        "10.3.2"
+      ]
+    },
+    {
+      "cve": "CVE-2026-105134",
+      "product_id": "p:ahsay:ahsaycbs",
+      "versions_raw": [
+        "10.3.2"
+      ]
+    },
+    {
+      "cve": "CVE-2026-106931",
+      "product_id": "p:egsecuresolutions:siteguardserveredition",
+      "versions_raw": []
+    },
+    {
+      "cve": "CVE-2026-110936",
+      "product_id": "p:siemens:softwarecenter",
+      "versions_raw": [
+        "All versions"
+      ]
+    },
+    {
+      "cve": "CVE-2026-114625",
+      "product_id": "p:arista:velocloudorchestrator",
+      "versions_raw": []
+    },
+    {
+      "cve": "CVE-2026-19490",
+      "product_id": "p:citrix:netscaleradc",
+      "versions_raw": [
+        "14.1 through 73.32",
+        "13.1 through 63.21"
+      ]
+    },
+    {
+      "cve": "CVE-2026-19490",
+      "product_id": "p:citrix:netscalergateway",
+      "versions_raw": [
+        "14.1 through 73.32",
+        "13.1 through 63.21"
+      ]
+    },
+    {
+      "cve": "CVE-2026-20079",
+      "product_id": "p:cisco:securefirewallmanagementcenterfmcsoftware",
+      "versions_raw": []
+    },
+    {
+      "cve": "CVE-2026-21589",
+      "product_id": "p:atlassian:bitbucketdatacenter",
+      "versions_raw": [
+        ">= 4.6.0",
+        "9.4.26",
+        "10.2.8",
+        "10.5.1"
+      ]
+    },
+    {
+      "cve": "CVE-2026-21589",
+      "product_id": "p:atlassian:confluencedatacenter",
+      "versions_raw": [
+        ">= 5.10.0",
+        "9.2.26",
+        "10.2.19"
+      ]
+    },
+    {
+      "cve": "CVE-2026-21589",
+      "product_id": "p:atlassian:crowddatacenter",
+      "versions_raw": [
+        ">= 2.11.0",
+        "6.3.7",
+        "7.0.3",
+        "7.1.1",
+        "7.2.4"
+      ]
+    },
+    {
+      "cve": "CVE-2026-21589",
+      "product_id": "p:atlassian:jirasoftwaredatacenter",
+      "versions_raw": [
+        ">= 7.1.0",
+        "9.12.40",
+        "10.3.26",
+        "11.3.12"
+      ]
+    },
+    {
+      "cve": "CVE-2026-21589",
+      "product_id": "p:atlassian:jiraservicemanagementdatacenter",
+      "versions_raw": [
+        ">= 3.1.0",
+        "5.12.40",
+        "10.3.26",
+        "11.3.12"
+      ]
+    },
+    {
+      "cve": "CVE-2026-21589",
+      "product_id": "p:atlassian:bamboodatacenter",
+      "versions_raw": [
+        ">= 7.0.1",
+        "10.2.24",
+        "12.1.12"
+      ]
+    },
+    {
+      "cve": "CVE-2026-21589",
+      "product_id": "p:atlassian:crucible",
+      "versions_raw": [
+        "4.9.15"
+      ]
+    },
+    {
+      "cve": "CVE-2026-21589",
+      "product_id": "p:atlassian:fisheye",
+      "versions_raw": [
+        "4.9.15"
+      ]
+    },
+    {
+      "cve": "CVE-2026-42016",
+      "product_id": "p:jfrog:artifactory",
+      "versions_raw": [
+        "before 7.133.11"
+      ]
+    },
+    {
+      "cve": "CVE-2026-42018",
+      "product_id": "p:jfrog:artifactory",
+      "versions_raw": []
+    },
+    {
+      "cve": "CVE-2026-53266",
+      "product_id": "p:unknown:linuxkernel",
+      "versions_raw": []
+    },
+    {
+      "cve": "CVE-2026-5430",
+      "product_id": "p:wso2:apicontrolplane",
+      "versions_raw": []
+    },
+    {
+      "cve": "CVE-2026-58704",
+      "product_id": "p:google:cellularmodem",
+      "versions_raw": []
+    },
+    {
+      "cve": "CVE-2026-65660",
+      "product_id": "p:microsoft:sharepoint",
+      "versions_raw": []
+    },
+    {
+      "cve": "CVE-2026-67277",
+      "product_id": "p:mikrotik:routeros",
+      "versions_raw": [
+        "6.49.21 (Long-term)",
+        "7.23.4 (Long-term)",
+        "7.24.2 (Stable)"
+      ]
+    },
+    {
+      "cve": "CVE-2026-67279",
+      "product_id": "p:mikrotik:routeros",
+      "versions_raw": [
+        "6.49.21 (Long-term)",
+        "7.23.4 (Long-term)",
+        "7.24.2 (Stable)"
+      ]
+    },
+    {
+      "cve": "CVE-2026-71362",
+      "product_id": "p:adobe:commerce",
+      "versions_raw": [
+        "before 2026-71362"
+      ]
+    },
+    {
+      "cve": "CVE-2026-7273",
+      "product_id": "p:zyxel:gs190048hpv2",
+      "versions_raw": []
+    },
+    {
+      "cve": "CVE-2026-75650",
+      "product_id": "p:adobe:commerce",
+      "versions_raw": []
+    },
+    {
+      "cve": "CVE-2026-75650",
+      "product_id": "p:adobe:magentoopensource",
+      "versions_raw": []
+    },
+    {
+      "cve": "CVE-2026-76460",
+      "product_id": "p:cisco:ise",
+      "versions_raw": []
+    },
+    {
+      "cve": "CVE-2026-76461",
+      "product_id": "p:cisco:secureemailgateway",
+      "versions_raw": []
+    },
+    {
+      "cve": "CVE-2026-76504",
+      "product_id": "p:cisco:catalystsdwanmanager",
+      "versions_raw": []
+    },
+    {
+      "cve": "CVE-2026-76519",
+      "product_id": "p:cisco:secureemailgateway",
+      "versions_raw": [
+        "affected"
+      ]
+    },
+    {
+      "cve": "CVE-2026-81963",
+      "product_id": "p:microsoft:windowsupdatestack",
+      "versions_raw": []
+    },
+    {
+      "cve": "CVE-2026-84869",
+      "product_id": "p:connectwise:screenconnect",
+      "versions_raw": []
+    },
+    {
+      "cve": "CVE-2026-85102",
+      "product_id": "p:checkpoint:securitygateway",
+      "versions_raw": []
+    },
+    {
+      "cve": "CVE-2026-85706",
+      "product_id": "p:gitlab:ceee",
+      "versions_raw": [
+        "18.7 before 18.11.12",
+        "19.0 before 19.0.9",
+        "19.1 before 19.1.8",
+        "19.2 before 19.2.6",
+        "19.3 before 19.3.2"
+      ]
+    },
+    {
+      "cve": "CVE-2026-85880",
+      "product_id": "p:microsoft:windows",
+      "versions_raw": [
+        "Advanced Local Procedure Call"
+      ]
+    },
+    {
+      "cve": "CVE-2026-86060",
+      "product_id": "p:mikrotik:routeros",
+      "versions_raw": [
+        "6.49.21 (Long-term)",
+        "7.23.4 (Long-term)",
+        "7.24.2 (Stable)"
+      ]
+    },
+    {
+      "cve": "CVE-2026-86218",
+      "product_id": "p:nable:ncentral",
+      "versions_raw": [
+        "before 2026.3.1.14"
+      ]
+    },
+    {
+      "cve": "CVE-2026-86950",
+      "product_id": "p:apple:ios",
+      "versions_raw": [
+        "before 27"
+      ]
+    },
+    {
+      "cve": "CVE-2026-86950",
+      "product_id": "p:apple:ipados",
+      "versions_raw": [
+        "before 27"
+      ]
+    },
+    {
+      "cve": "CVE-2026-86950",
+      "product_id": "p:apple:macos",
+      "versions_raw": [
+        "Sequoia 15.8.1",
+        "Tahoe 26.7.1"
+      ]
+    },
+    {
+      "cve": "CVE-2026-87491",
+      "product_id": "p:google:chrome",
+      "versions_raw": [
+        "153.0.8010.36"
+      ]
+    },
+    {
+      "cve": "CVE-2026-87886",
+      "product_id": "p:acronis:backuppluginforcpanelwhm",
+      "versions_raw": [
+        "before build 1.9.3.1021"
+      ]
+    },
+    {
+      "cve": "CVE-2026-87886",
+      "product_id": "p:acronis:backupextensionforplesk",
+      "versions_raw": [
+        "before build 1.8.11.638"
+      ]
+    },
+    {
+      "cve": "CVE-2026-87886",
+      "product_id": "p:unknown:acronisbackuppluginfordirectadmin",
+      "versions_raw": [
+        "before build 1.2.3.238"
+      ]
+    },
+    {
+      "cve": "CVE-2026-87902",
+      "product_id": "p:unknown:wordpresscore",
+      "versions_raw": []
+    },
+    {
+      "cve": "CVE-2026-88771",
+      "product_id": "p:citrix:netscaleradc",
+      "versions_raw": [
+        "before 14.1-73.37",
+        "before 13.1-64.23",
+        "before 14.1-73.37 FIPS",
+        "before 13.1.37.279 FIPS"
+      ]
+    },
+    {
+      "cve": "CVE-2026-88771",
+      "product_id": "p:citrix:netscalergateway",
+      "versions_raw": [
+        "before 14.1-73.37",
+        "before 13.1-64.23"
+      ]
+    },
+    {
+      "cve": "CVE-2026-88772",
+      "product_id": "p:citrix:netscaleradc",
+      "versions_raw": [
+        "before 14.1-73.37",
+        "before 13.1-64.23",
+        "before 14.1-73.37 FIPS",
+        "before 13.1.37.279 FIPS"
+      ]
+    },
+    {
+      "cve": "CVE-2026-88772",
+      "product_id": "p:citrix:netscalergateway",
+      "versions_raw": [
+        "before 14.1-73.37",
+        "before 13.1-64.23"
+      ]
+    },
+    {
+      "cve": "CVE-2026-88779",
+      "product_id": "p:citrix:netscaleradc",
+      "versions_raw": [
+        "before 14.1-73.41",
+        "before 13.1-64.28",
+        "before 14.1-73.41 FIPS",
+        "before 13.1-37.282"
+      ]
+    },
+    {
+      "cve": "CVE-2026-88779",
+      "product_id": "p:citrix:netscalergateway",
+      "versions_raw": [
+        "before 14.1-73.41",
+        "before 13.1-64.28"
+      ]
+    },
+    {
+      "cve": "CVE-2026-93616",
+      "product_id": "p:checkpoint:securitymanagementserver",
+      "versions_raw": []
+    },
+    {
+      "cve": "CVE-2026-93952",
+      "product_id": "p:arista:velocloudorchestrator",
+      "versions_raw": [
+        "on-prem"
+      ]
+    },
+    {
+      "cve": "CVE-2026-94127",
+      "product_id": "p:f5:bigipapm",
+      "versions_raw": [
+        "[EoTS]"
+      ]
+    },
+    {
+      "cve": "CVE-2026-96652",
+      "product_id": "p:plex:mediaserver",
+      "versions_raw": [
+        "before 1.43.3.10861"
+      ]
+    },
+    {
+      "cve": "CVE-2026-96654",
+      "product_id": "p:plex:mediaserver",
+      "versions_raw": [
+        "before 1.43.3.10861"
+      ]
+    },
+    {
+      "cve": "CVE-2026-96655",
+      "product_id": "p:plex:mediaserver",
+      "versions_raw": [
+        "before 1.43.3.10861"
+      ]
+    },
+    {
+      "cve": "CVE-2026-96656",
+      "product_id": "p:plex:mediaserver",
+      "versions_raw": [
+        "before 1.43.3.10861"
+      ]
+    },
+    {
+      "cve": "CVE-2026-96951",
+      "product_id": "p:microsoft:windowsshell",
+      "versions_raw": []
+    }
+  ],
+  "chained_with": [
+    {
+      "cve": "CVE-2023-22894",
+      "other": "CVE-2023-22621"
+    },
+    {
+      "cve": "CVE-2026-102489",
+      "other": "CVE-2026-102490"
+    },
+    {
+      "cve": "CVE-2026-102490",
+      "other": "CVE-2026-102489"
+    },
+    {
+      "cve": "CVE-2026-105133",
+      "other": "CVE-2026-105134"
+    },
+    {
+      "cve": "CVE-2026-105134",
+      "other": "CVE-2026-105133"
+    },
+    {
+      "cve": "CVE-2026-96652",
+      "other": "CVE-2026-96654"
+    },
+    {
+      "cve": "CVE-2026-96652",
+      "other": "CVE-2026-96655"
+    },
+    {
+      "cve": "CVE-2026-96652",
+      "other": "CVE-2026-96656"
+    },
+    {
+      "cve": "CVE-2026-96654",
+      "other": "CVE-2026-96652"
+    },
+    {
+      "cve": "CVE-2026-96654",
+      "other": "CVE-2026-96655"
+    },
+    {
+      "cve": "CVE-2026-96654",
+      "other": "CVE-2026-96656"
+    },
+    {
+      "cve": "CVE-2026-96655",
+      "other": "CVE-2026-96652"
+    },
+    {
+      "cve": "CVE-2026-96655",
+      "other": "CVE-2026-96654"
+    },
+    {
+      "cve": "CVE-2026-96655",
+      "other": "CVE-2026-96656"
+    },
+    {
+      "cve": "CVE-2026-96656",
+      "other": "CVE-2026-96652"
+    },
+    {
+      "cve": "CVE-2026-96656",
+      "other": "CVE-2026-96654"
+    },
+    {
+      "cve": "CVE-2026-96656",
+      "other": "CVE-2026-96655"
+    }
+  ],
+  "weakness_phrases": [
+    {
+      "cve": "CVE-2015-3306",
+      "phrase": "improper access control"
+    },
+    {
+      "cve": "CVE-2015-3306",
+      "phrase": "arbitrary file read"
+    },
+    {
+      "cve": "CVE-2015-3306",
+      "phrase": "arbitrary file write"
+    },
+    {
+      "cve": "CVE-2015-5477",
+      "phrase": "denial of service"
+    },
+    {
+      "cve": "CVE-2015-5477",
+      "phrase": "data processing errors"
+    },
+    {
+      "cve": "CVE-2016-3081",
+      "phrase": "command injection"
+    },
+    {
+      "cve": "CVE-2021-3199",
+      "phrase": "directory traversal"
+    },
+    {
+      "cve": "CVE-2021-3199",
+      "phrase": "remote code execution"
+    },
+    {
+      "cve": "CVE-2023-22894",
+      "phrase": "cleartext storage of sensitive information"
+    },
+    {
+      "cve": "CVE-2023-22894",
+      "phrase": "query filter vulnerability"
+    },
+    {
+      "cve": "CVE-2023-22894",
+      "phrase": "remote code execution"
+    },
+    {
+      "cve": "CVE-2025-25249",
+      "phrase": "heap-based buffer overflow"
+    },
+    {
+      "cve": "CVE-2025-25249",
+      "phrase": "authentication bypass"
+    },
+    {
+      "cve": "CVE-2025-39682",
+      "phrase": "improper check for unusual or exceptional conditions"
+    },
+    {
+      "cve": "CVE-2025-39682",
+      "phrase": "zero-length record bypass"
+    },
+    {
+      "cve": "CVE-2025-39964",
+      "phrase": "race condition"
+    },
+    {
+      "cve": "CVE-2025-39964",
+      "phrase": "concurrent writes"
+    },
+    {
+      "cve": "CVE-2025-61624",
+      "phrase": "path traversal"
+    },
+    {
+      "cve": "CVE-2026-0322",
+      "phrase": "code injection"
+    },
+    {
+      "cve": "CVE-2026-0322",
+      "phrase": "remote code execution"
+    },
+    {
+      "cve": "CVE-2026-102489",
+      "phrase": "session hijack"
+    },
+    {
+      "cve": "CVE-2026-102489",
+      "phrase": "session fixation"
+    },
+    {
+      "cve": "CVE-2026-102489",
+      "phrase": "remote code execution"
+    },
+    {
+      "cve": "CVE-2026-102490",
+      "phrase": "improper privilege management"
+    },
+    {
+      "cve": "CVE-2026-102764",
+      "phrase": "authentication bypass"
+    },
+    {
+      "cve": "CVE-2026-102764",
+      "phrase": "spoofing"
+    },
+    {
+      "cve": "CVE-2026-102764",
+      "phrase": "file operations"
+    },
+    {
+      "cve": "CVE-2026-104286",
+      "phrase": "path traversal"
+    },
+    {
+      "cve": "CVE-2026-104286",
+      "phrase": "improper neutralization of NULL byte or NULL character"
+    },
+    {
+      "cve": "CVE-2026-104935",
+      "phrase": "authentication bypass"
+    },
+    {
+      "cve": "CVE-2026-104935",
+      "phrase": "spoofing"
+    },
+    {
+      "cve": "CVE-2026-105133",
+      "phrase": "improper authentication"
+    },
+    {
+      "cve": "CVE-2026-105134",
+      "phrase": "command injection"
+    },
+    {
+      "cve": "CVE-2026-105134",
+      "phrase": "os command injection"
+    },
+    {
+      "cve": "CVE-2026-106931",
+      "phrase": "OS command injection"
+    },
+    {
+      "cve": "CVE-2026-110936",
+      "phrase": "uncontrolled search path"
+    },
+    {
+      "cve": "CVE-2026-110936",
+      "phrase": "arbitrary code execution"
+    },
+    {
+      "cve": "CVE-2026-114625",
+      "phrase": "SQL injection"
+    },
+    {
+      "cve": "CVE-2026-19490",
+      "phrase": "authentication bypass"
+    },
+    {
+      "cve": "CVE-2026-20079",
+      "phrase": "authentication bypass"
+    },
+    {
+      "cve": "CVE-2026-21589",
+      "phrase": "files or directories accessible to external parties"
+    },
+    {
+      "cve": "CVE-2026-21589",
+      "phrase": "arbitrary file access"
+    },
+    {
+      "cve": "CVE-2026-42016",
+      "phrase": "privilege escalation"
+    },
+    {
+      "cve": "CVE-2026-42016",
+      "phrase": "authorization vulnerability"
+    },
+    {
+      "cve": "CVE-2026-42018",
+      "phrase": "improper authentication"
+    },
+    {
+      "cve": "CVE-2026-42018",
+      "phrase": "anonymous token exposure"
+    },
+    {
+      "cve": "CVE-2026-53266",
+      "phrase": "out-of-bounds write"
+    },
+    {
+      "cve": "CVE-2026-53266",
+      "phrase": "ARP sender hardware address rewrite"
+    },
+    {
+      "cve": "CVE-2026-5430",
+      "phrase": "path traversal"
+    },
+    {
+      "cve": "CVE-2026-5430",
+      "phrase": "unrestricted file upload"
+    },
+    {
+      "cve": "CVE-2026-5430",
+      "phrase": "remote code execution"
+    },
+    {
+      "cve": "CVE-2026-58704",
+      "phrase": "permission bypass"
+    },
+    {
+      "cve": "CVE-2026-58704",
+      "phrase": "logic error"
+    },
+    {
+      "cve": "CVE-2026-58704",
+      "phrase": "improper authorization"
+    },
+    {
+      "cve": "CVE-2026-58704",
+      "phrase": "escalation of privilege"
+    },
+    {
+      "cve": "CVE-2026-65660",
+      "phrase": "code injection"
+    },
+    {
+      "cve": "CVE-2026-65660",
+      "phrase": "spoofing"
+    },
+    {
+      "cve": "CVE-2026-67277",
+      "phrase": "kernel memory disclosure"
+    },
+    {
+      "cve": "CVE-2026-67277",
+      "phrase": "denial of service"
+    },
+    {
+      "cve": "CVE-2026-67277",
+      "phrase": "missing authentication"
+    },
+    {
+      "cve": "CVE-2026-67277",
+      "phrase": "critical function vulnerability"
+    },
+    {
+      "cve": "CVE-2026-67279",
+      "phrase": "improper enforcement of behavioral workflow"
+    },
+    {
+      "cve": "CVE-2026-67279",
+      "phrase": "unauthenticated exploitation"
+    },
+    {
+      "cve": "CVE-2026-67279",
+      "phrase": "unauthenticated client to open a session channel and send an exec request"
+    },
+    {
+      "cve": "CVE-2026-71362",
+      "phrase": "Incorrect Authorization"
+    },
+    {
+      "cve": "CVE-2026-7273",
+      "phrase": "stack-based buffer overflow"
+    },
+    {
+      "cve": "CVE-2026-75650",
+      "phrase": "arbitrary code execution"
+    },
+    {
+      "cve": "CVE-2026-75650",
+      "phrase": "improper neutralization of special elements used in a template engine"
+    },
+    {
+      "cve": "CVE-2026-76460",
+      "phrase": "authentication bypass"
+    },
+    {
+      "cve": "CVE-2026-76461",
+      "phrase": "SQL injection"
+    },
+    {
+      "cve": "CVE-2026-76504",
+      "phrase": "URI encoding vulnerability"
+    },
+    {
+      "cve": "CVE-2026-76504",
+      "phrase": "hex encoding vulnerability"
+    },
+    {
+      "cve": "CVE-2026-76504",
+      "phrase": "authentication bypass"
+    },
+    {
+      "cve": "CVE-2026-76519",
+      "phrase": "relative path traversal"
+    },
+    {
+      "cve": "CVE-2026-81963",
+      "phrase": "link following"
+    },
+    {
+      "cve": "CVE-2026-81963",
+      "phrase": "privilege escalation"
+    },
+    {
+      "cve": "CVE-2026-84869",
+      "phrase": "improper privilege management"
+    },
+    {
+      "cve": "CVE-2026-84869",
+      "phrase": "missing authorization"
+    },
+    {
+      "cve": "CVE-2026-84869",
+      "phrase": "file transfer and execution without authorization"
+    },
+    {
+      "cve": "CVE-2026-85102",
+      "phrase": "arbitrary code execution"
+    },
+    {
+      "cve": "CVE-2026-85102",
+      "phrase": "certificate trust validation vulnerability"
+    },
+    {
+      "cve": "CVE-2026-85706",
+      "phrase": "path traversal"
+    },
+    {
+      "cve": "CVE-2026-85706",
+      "phrase": "arbitrary file read"
+    },
+    {
+      "cve": "CVE-2026-85880",
+      "phrase": "heap-based buffer overflow"
+    },
+    {
+      "cve": "CVE-2026-86060",
+      "phrase": "argument-handling flaw"
+    },
+    {
+      "cve": "CVE-2026-86060",
+      "phrase": "improper neutralization of argument delimiters"
+    },
+    {
+      "cve": "CVE-2026-86060",
+      "phrase": "command vulnerability"
+    },
+    {
+      "cve": "CVE-2026-86218",
+      "phrase": "static code injection"
+    },
+    {
+      "cve": "CVE-2026-86218",
+      "phrase": "pre-auth remote code execution"
+    },
+    {
+      "cve": "CVE-2026-86950",
+      "phrase": "out-of-bounds write"
+    },
+    {
+      "cve": "CVE-2026-86950",
+      "phrase": "arbitrary code execution"
+    },
+    {
+      "cve": "CVE-2026-87491",
+      "phrase": "out of bounds write"
+    },
+    {
+      "cve": "CVE-2026-87886",
+      "phrase": "insecure file permissions"
+    },
+    {
+      "cve": "CVE-2026-87886",
+      "phrase": "incorrect default permissions vulnerability"
+    },
+    {
+      "cve": "CVE-2026-87902",
+      "phrase": "remote file inclusion"
+    },
+    {
+      "cve": "CVE-2026-87902",
+      "phrase": "remote code execution"
+    },
+    {
+      "cve": "CVE-2026-88771",
+      "phrase": "unauthenticated arbitrary command execution"
+    },
+    {
+      "cve": "CVE-2026-88772",
+      "phrase": "Remote Code Execution"
+    },
+    {
+      "cve": "CVE-2026-88772",
+      "phrase": "Denial of Service"
+    },
+    {
+      "cve": "CVE-2026-88779",
+      "phrase": "improper restriction of operations within the bounds of a memory buffer"
+    },
+    {
+      "cve": "CVE-2026-88779",
+      "phrase": "denial of service"
+    },
+    {
+      "cve": "CVE-2026-93616",
+      "phrase": "path traversal"
+    },
+    {
+      "cve": "CVE-2026-93616",
+      "phrase": "directory traversal"
+    },
+    {
+      "cve": "CVE-2026-93616",
+      "phrase": "file upload"
+    },
+    {
+      "cve": "CVE-2026-93616",
+      "phrase": "arbitrary script execution"
+    },
+    {
+      "cve": "CVE-2026-93952",
+      "phrase": "improper input validation"
+    },
+    {
+      "cve": "CVE-2026-94127",
+      "phrase": "heap-based buffer overflow"
+    },
+    {
+      "cve": "CVE-2026-94127",
+      "phrase": "Remote Code Execution"
+    },
+    {
+      "cve": "CVE-2026-96652",
+      "phrase": "server-side request forgery (SSRF)"
+    },
+    {
+      "cve": "CVE-2026-96654",
+      "phrase": "improper neutralization of encoded URI schemes"
+    },
+    {
+      "cve": "CVE-2026-96654",
+      "phrase": "web page vulnerability"
+    },
+    {
+      "cve": "CVE-2026-96654",
+      "phrase": "function call with user-controlled parameters"
+    },
+    {
+      "cve": "CVE-2026-96655",
+      "phrase": "server-side request forgery"
+    },
+    {
+      "cve": "CVE-2026-96656",
+      "phrase": "external control of file name or path"
+    },
+    {
+      "cve": "CVE-2026-96656",
+      "phrase": "arbitrary file execution"
+    },
+    {
+      "cve": "CVE-2026-96951",
+      "phrase": "command injection"
+    }
+  ],
+  "cwe_explicit": [
+    {
+      "cve": "CVE-2025-61624",
+      "cwe": "CWE-22"
+    }
+  ]
+}

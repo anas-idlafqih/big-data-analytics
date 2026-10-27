@@ -1,0 +1,367 @@
+{
+  "source": "CISA KEV + NVD API 2.0",
+  "kev_sha256": "cb77ba6ee61c8fa963d2eb16dda2cd4746c5b11e0353f079d3e0e569eb5d2778",
+  "requested": 60,
+  "selected": [
+    {
+      "cve": "CVE-2026-114625",
+      "date_added": "2026-10-23",
+      "vendor": "Arista",
+      "product": "VeloCloud Orchestrator"
+    },
+    {
+      "cve": "CVE-2026-96656",
+      "date_added": "2026-10-20",
+      "vendor": "Plex",
+      "product": "Media Server"
+    },
+    {
+      "cve": "CVE-2026-96655",
+      "date_added": "2026-10-20",
+      "vendor": "Plex",
+      "product": "Media Server"
+    },
+    {
+      "cve": "CVE-2026-96654",
+      "date_added": "2026-10-20",
+      "vendor": "Plex",
+      "product": "Media Server"
+    },
+    {
+      "cve": "CVE-2026-96652",
+      "date_added": "2026-10-20",
+      "vendor": "Plex",
+      "product": "Media Server"
+    },
+    {
+      "cve": "CVE-2026-110936",
+      "date_added": "2026-10-20",
+      "vendor": "Siemens",
+      "product": "Software Center"
+    },
+    {
+      "cve": "CVE-2026-106931",
+      "date_added": "2026-10-20",
+      "vendor": "EG Secure Solutions",
+      "product": "SiteGuard Server Edition"
+    },
+    {
+      "cve": "CVE-2026-102764",
+      "date_added": "2026-10-16",
+      "vendor": "BeyondTrust",
+      "product": "Remote Support"
+    },
+    {
+      "cve": "CVE-2025-61624",
+      "date_added": "2026-10-16",
+      "vendor": "Fortinet",
+      "product": "Multiple Products"
+    },
+    {
+      "cve": "CVE-2026-21589",
+      "date_added": "2026-10-15",
+      "vendor": "Atlassian",
+      "product": "Multiple Products"
+    },
+    {
+      "cve": "CVE-2026-76519",
+      "date_added": "2026-10-14",
+      "vendor": "Cisco",
+      "product": "Secure Email Gateway"
+    },
+    {
+      "cve": "CVE-2026-105134",
+      "date_added": "2026-10-14",
+      "vendor": "Ahsay",
+      "product": "AhsayCBS"
+    },
+    {
+      "cve": "CVE-2026-105133",
+      "date_added": "2026-10-14",
+      "vendor": "Ahsay",
+      "product": "AhsayCBS"
+    },
+    {
+      "cve": "CVE-2026-0322",
+      "date_added": "2026-10-14",
+      "vendor": "Palo Alto Networks",
+      "product": "PAN-OS"
+    },
+    {
+      "cve": "CVE-2026-96951",
+      "date_added": "2026-10-13",
+      "vendor": "Microsoft",
+      "product": "Windows"
+    },
+    {
+      "cve": "CVE-2026-104935",
+      "date_added": "2026-10-13",
+      "vendor": "Ivanti",
+      "product": "Connect Secure"
+    },
+    {
+      "cve": "CVE-2023-22894",
+      "date_added": "2026-10-08",
+      "vendor": "Strapi",
+      "product": "Strapi"
+    },
+    {
+      "cve": "CVE-2021-3199",
+      "date_added": "2026-10-08",
+      "vendor": "ONLYOFFICE",
+      "product": "Docs"
+    },
+    {
+      "cve": "CVE-2016-3081",
+      "date_added": "2026-10-08",
+      "vendor": "Apache",
+      "product": "Struts"
+    },
+    {
+      "cve": "CVE-2015-5477",
+      "date_added": "2026-10-08",
+      "vendor": "ISC",
+      "product": "BIND"
+    },
+    {
+      "cve": "CVE-2015-3306",
+      "date_added": "2026-10-08",
+      "vendor": "ProFTPD",
+      "product": "ProFTPD"
+    },
+    {
+      "cve": "CVE-2026-88779",
+      "date_added": "2026-10-04",
+      "vendor": "Citrix",
+      "product": "NetScaler"
+    },
+    {
+      "cve": "CVE-2026-102490",
+      "date_added": "2026-10-02",
+      "vendor": "Zammad GmbH",
+      "product": "Zammad"
+    },
+    {
+      "cve": "CVE-2026-102489",
+      "date_added": "2026-10-02",
+      "vendor": "Zammad GmbH",
+      "product": "Zammad"
+    },
+    {
+      "cve": "CVE-2026-104286",
+      "date_added": "2026-10-01",
+      "vendor": "Fortinet",
+      "product": "FortiMail"
+    },
+    {
+      "cve": "CVE-2026-76504",
+      "date_added": "2026-09-30",
+      "vendor": "Cisco",
+      "product": "Catalyst SD-WAN Manager"
+    },
+    {
+      "cve": "CVE-2026-86950",
+      "date_added": "2026-09-29",
+      "vendor": "Apple",
+      "product": "Multiple Products"
+    },
+    {
+      "cve": "CVE-2026-88772",
+      "date_added": "2026-09-27",
+      "vendor": "Citrix",
+      "product": "NetScaler"
+    },
+    {
+      "cve": "CVE-2026-88771",
+      "date_added": "2026-09-27",
+      "vendor": "Citrix",
+      "product": "NetScaler"
+    },
+    {
+      "cve": "CVE-2026-87902",
+      "date_added": "2026-09-25",
+      "vendor": "WordPress",
+      "product": "Core"
+    },
+    {
+      "cve": "CVE-2026-67279",
+      "date_added": "2026-09-25",
+      "vendor": "MikroTik",
+      "product": "RouterOS"
+    },
+    {
+      "cve": "CVE-2026-65660",
+      "date_added": "2026-09-25",
+      "vendor": "Microsoft",
+      "product": "SharePoint"
+    },
+    {
+      "cve": "CVE-2026-71362",
+      "date_added": "2026-09-24",
+      "vendor": "Adobe",
+      "product": "Commerce and Magento "
+    },
+    {
+      "cve": "CVE-2026-5430",
+      "date_added": "2026-09-24",
+      "vendor": "WSO2",
+      "product": "Multiple Products"
+    },
+    {
+      "cve": "CVE-2026-94127",
+      "date_added": "2026-09-22",
+      "vendor": "F5",
+      "product": "BIG-IP APM"
+    },
+    {
+      "cve": "CVE-2026-93952",
+      "date_added": "2026-09-22",
+      "vendor": "Arista",
+      "product": "VeloCloud Orchestrator"
+    },
+    {
+      "cve": "CVE-2026-93616",
+      "date_added": "2026-09-22",
+      "vendor": "Check Point",
+      "product": "Multiple Products"
+    },
+    {
+      "cve": "CVE-2026-85102",
+      "date_added": "2026-09-22",
+      "vendor": "Check Point",
+      "product": "Multiple Products"
+    },
+    {
+      "cve": "CVE-2026-7273",
+      "date_added": "2026-09-21",
+      "vendor": "Zyxel",
+      "product": "GS1900 Series Switches"
+    },
+    {
+      "cve": "CVE-2026-53266",
+      "date_added": "2026-09-18",
+      "vendor": "Linux",
+      "product": "Kernel"
+    },
+    {
+      "cve": "CVE-2025-39964",
+      "date_added": "2026-09-18",
+      "vendor": "Linux",
+      "product": "Kernel"
+    },
+    {
+      "cve": "CVE-2025-39682",
+      "date_added": "2026-09-18",
+      "vendor": "Linux",
+      "product": "Kernel"
+    },
+    {
+      "cve": "CVE-2026-87886",
+      "date_added": "2026-09-16",
+      "vendor": "Acronis",
+      "product": "Backup"
+    },
+    {
+      "cve": "CVE-2026-76460",
+      "date_added": "2026-09-16",
+      "vendor": "Cisco",
+      "product": "Identity Services Engine"
+    },
+    {
+      "cve": "CVE-2026-58704",
+      "date_added": "2026-09-16",
+      "vendor": "Google",
+      "product": "Pixel"
+    },
+    {
+      "cve": "CVE-2026-76461",
+      "date_added": "2026-09-14",
+      "vendor": "Cisco",
+      "product": "Secure Email Gateway"
+    },
+    {
+      "cve": "CVE-2026-85706",
+      "date_added": "2026-09-11",
+      "vendor": "GitLab",
+      "product": "Community Edition and Enterprise Edition"
+    },
+    {
+      "cve": "CVE-2026-84869",
+      "date_added": "2026-09-11",
+      "vendor": "ConnectWise",
+      "product": "ScreenConnect"
+    },
+    {
+      "cve": "CVE-2026-42018",
+      "date_added": "2026-09-11",
+      "vendor": "JFrog",
+      "product": "Artifactory"
+    },
+    {
+      "cve": "CVE-2026-42016",
+      "date_added": "2026-09-11",
+      "vendor": "JFrog",
+      "product": "Artifactory"
+    },
+    {
+      "cve": "CVE-2026-86060",
+      "date_added": "2026-09-10",
+      "vendor": "MikroTik",
+      "product": "RouterOS"
+    },
+    {
+      "cve": "CVE-2026-67277",
+      "date_added": "2026-09-10",
+      "vendor": "MikroTik",
+      "product": "RouterOS"
+    },
+    {
+      "cve": "CVE-2026-87491",
+      "date_added": "2026-09-09",
+      "vendor": "Google",
+      "product": "Chromium V8"
+    },
+    {
+      "cve": "CVE-2026-20079",
+      "date_added": "2026-09-09",
+      "vendor": "Cisco",
+      "product": "Secure Firewall Management Center (FMC) and Security Cloud Control (SCC) Firewall Management"
+    },
+    {
+      "cve": "CVE-2026-19490",
+      "date_added": "2026-09-09",
+      "vendor": "Citrix",
+      "product": "NetScaler"
+    },
+    {
+      "cve": "CVE-2025-25249",
+      "date_added": "2026-09-09",
+      "vendor": "Fortinet",
+      "product": "Multiple Products"
+    },
+    {
+      "cve": "CVE-2026-86218",
+      "date_added": "2026-09-08",
+      "vendor": "N-able",
+      "product": "N-central"
+    },
+    {
+      "cve": "CVE-2026-85880",
+      "date_added": "2026-09-08",
+      "vendor": "Microsoft",
+      "product": "Windows"
+    },
+    {
+      "cve": "CVE-2026-81963",
+      "date_added": "2026-09-08",
+      "vendor": "Microsoft",
+      "product": "Windows"
+    },
+    {
+      "cve": "CVE-2026-75650",
+      "date_added": "2026-09-08",
+      "vendor": "Adobe",
+      "product": "Commerce and Magento"
+    }
+  ]
+}

@@ -1,0 +1,75 @@
+# Local big-data stack: HDFS (1 datanode) + Spark (master + 1 worker) + Neo4j.
+# The Python services (extraction, GraphRAG) run on the host, outside Docker.
+#
+# Usage (from the repo root):
+#   docker compose -f docker/docker-compose.yml up -d
+#   docker compose -f docker/docker-compose.yml down        # keeps the data
+#   docker compose -f docker/docker-compose.yml down -v     # deletes the data
+name: cyber_projet
+
+services:
+  namenode:
+    image: bde2020/hadoop-namenode:2.0.0-hadoop3.2.1-java8
+    container_name: namenode
+    environment:
+      - CLUSTER_NAME=cyber
+    env_file: [./hadoop.env]
+    ports: ["9870:9870", "9000:9000"]
+    volumes:
+      - hadoop_namenode:/hadoop/dfs/name
+      - ../data:/host-data            # host <-> HDFS exchange (hdfs dfs -put / -get)
+    mem_limit: 1g
+
+  datanode:
+    image: bde2020/hadoop-datanode:2.0.0-hadoop3.2.1-java8
+    container_name: datanode
+    environment:
+      SERVICE_PRECONDITION: "namenode:9870"
+    env_file: [./hadoop.env]
+    volumes:
+      - hadoop_datanode:/hadoop/dfs/data
+    depends_on: [namenode]
+    mem_limit: 1g
+
+  spark-master:
+    image: apache/spark:3.5.9-python3
+    container_name: spark-master
+    command: /opt/spark/bin/spark-class org.apache.spark.deploy.master.Master --host spark-master
+    ports: ["8080:8080", "7077:7077"]
+    volumes:
+      - ../spark_jobs:/opt/spark/jobs
+      - ../data:/host-data
+    mem_limit: 1g                      # the driver runs here (client mode)
+
+  spark-worker:
+    image: apache/spark:3.5.9-python3
+    container_name: spark-worker
+    command: /opt/spark/bin/spark-class org.apache.spark.deploy.worker.Worker spark://spark-master:7077
+    environment:
+      - SPARK_WORKER_CORES=2
+      - SPARK_WORKER_MEMORY=1g
+    ports: ["8081:8081"]
+    depends_on: [spark-master]
+    mem_limit: 1536m
+
+  neo4j:
+    image: neo4j:5-community
+    container_name: neo4j
+    environment:
+      - NEO4J_AUTH=neo4j/${NEO4J_PASSWORD:?Set NEO4J_PASSWORD in docker/.env}
+      - NEO4J_PLUGINS=["apoc","graph-data-science"]
+      - NEO4J_server_memory_heap_initial__size=512m
+      - NEO4J_server_memory_heap_max__size=1g
+      - NEO4J_server_memory_pagecache_size=512m
+      - NEO4J_dbms_security_procedures_unrestricted=gds.*,apoc.*
+      - NEO4J_dbms_security_procedures_allowlist=gds.*,apoc.*
+    ports: ["7474:7474", "7687:7687"]
+    volumes:
+      - neo4j_data:/data
+      - ../data/processed:/var/lib/neo4j/import   # for LOAD CSV
+    mem_limit: 2g
+
+volumes:
+  hadoop_namenode: {}
+  hadoop_datanode: {}
+  neo4j_data: {}
