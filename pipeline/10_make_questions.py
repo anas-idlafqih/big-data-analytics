@@ -7,7 +7,7 @@
   D semantic      paraphrased questions; gold = CVEs whose text matches a keyword list ("silver" gold)
 
 Gold answers are computed in Python from the graph (the whole graph is read once). Each question
-also carries `gold_cypher`: the hand-written query that produces the same answer. It is the
+also carries `evidence` (the CVEs supporting the gold, to score the declared sources) and `gold_cypher`: the hand-written query that produces the same answer. It is the
 "oracle" of the structured approach and is documentation; --verify runs every one of them and
 checks that Neo4j returns exactly the Python gold.
 
@@ -33,7 +33,8 @@ SEED = 42
 
 SEMANTIC = [  # (question, keywords searched in the CVE text)
     ("Which vulnerabilities allow an attacker to read or access files they should not be able to reach?",
-     ["path traversal", "directory traversal", "arbitrary file", "read arbitrary files", "files or directories accessible"]),
+     ["path traversal", "directory traversal", "read arbitrary files", "arbitrary file read", "arbitrary file access",
+      "read and write to arbitrary files", "files or directories accessible", "access specific files"]),
     ("Which vulnerabilities let someone get past the login or authentication step?",
      ["authentication bypass", "bypass authentication", "improper authentication", "missing authentication"]),
     ("Which vulnerabilities could let an attacker remotely run their own code or commands on the system?",
@@ -93,17 +94,19 @@ def build(g: dict) -> list[dict]:
 
     qs: list[dict] = []
 
-    def add(qtype, sub, question, answer_type, gold, cypher, quality="exact (graph)"):
+    def add(qtype, sub, question, answer_type, gold, cypher, evidence, quality="exact (graph)"):
+        """`evidence` = the CVE ids that support the gold answer (used to score declared sources)."""
         qs.append({"id": f"{qtype}{sub}-{sum(1 for q in qs if q['id'].startswith(qtype + sub)) + 1}",
                    "type": qtype, "question": question, "answer_type": answer_type,
-                   "gold": gold, "gold_cypher": cypher, "gold_quality": quality})
+                   "gold": gold, "gold_cypher": cypher, "evidence": sorted(set(evidence)),
+                   "gold_quality": quality})
 
     # ---------------------------------------------------------------- A factual
     ordered = sorted((c for c in cve_products if c in in_corpus), key=lambda c: (-len(cve_products[c]), c))
     for c in list(dict.fromkeys(ordered[:1] + [x for x in ordered if len(cve_products[x]) == 2][:1])):
         add("A", "1", f"Which products does {c} affect?", "products",
             [prod(p) for p in sorted(cve_products[c])],
-            f'MATCH (:CVE {{cve_id: {lit(c)}}})-[:AFFECTS]->(p:Product) RETURN DISTINCT p.name AS name')
+            f'MATCH (:CVE {{cve_id: {lit(c)}}})-[:AFFECTS]->(p:Product) RETURN DISTINCT p.name AS name', [c])
 
     name_count = defaultdict(int)
     for r in products.values():
@@ -111,13 +114,14 @@ def build(g: dict) -> list[dict]:
     cands = sorted(p for p in vendor_of if len(products[p]["name"]) >= 6 and name_count[products[p]["name"]] == 1)
     for p in rng.sample(cands, min(2, len(cands))):
         add("A", "2", f"Which vendor produces {products[p]['name']}?", "vendors", [vend(vendor_of[p])],
-            f'MATCH (v:Vendor)-[:PRODUCES]->(:Product {{product_id: {lit(p)}}}) RETURN DISTINCT v.name AS name')
+            f'MATCH (v:Vendor)-[:PRODUCES]->(:Product {{product_id: {lit(p)}}}) RETURN DISTINCT v.name AS name', sorted(product_cves[p]))
 
     multi = sorted((p for p in product_cves if len(product_cves[p]) >= 2), key=lambda p: (-len(product_cves[p]), p))
     for p in list(dict.fromkeys(multi[:1] + [x for x in multi if len(product_cves[x]) == 2][:1])):
         add("A", "3", f"Which CVEs affect {products[p]['name']}?", "cves",
             [cve_item(c) for c in sorted(product_cves[p])],
-            f'MATCH (c:CVE)-[:AFFECTS]->(:Product {{product_id: {lit(p)}}}) RETURN DISTINCT c.cve_id AS name')
+            f'MATCH (c:CVE)-[:AFFECTS]->(:Product {{product_id: {lit(p)}}}) RETURN DISTINCT c.cve_id AS name',
+            sorted(product_cves[p]))
 
     # --------------------------------------------------------------- B multi-hop
     seeds, seen_gold = [], []
@@ -130,14 +134,16 @@ def build(g: dict) -> list[dict]:
     for c, gold in seeds:
         add("B", "1", f"Which products are affected by the CVEs that are chained with {c}?", "products",
             [prod(p) for p in sorted(gold)],
-            f'MATCH (:CVE {{cve_id: {lit(c)}}})-[:CHAINED_WITH]-(:CVE)-[:AFFECTS]->(p:Product) RETURN DISTINCT p.name AS name')
+            f'MATCH (:CVE {{cve_id: {lit(c)}}})-[:CHAINED_WITH]-(:CVE)-[:AFFECTS]->(p:Product) RETURN DISTINCT p.name AS name',
+            [c] + sorted(o for o in chain[c] if cve_products[o]))
 
     wv = {w: {vendor_of[p] for c in cs for p in cve_products[c] if p in vendor_of} for w, cs in weakness_cves.items()}
     for w in sorted((w for w in wv if len(wv[w]) >= 2), key=lambda w: (-len(wv[w]), w))[:2]:
         add("B", "2", f'Which vendors have products affected by a CVE with the weakness "{weakness_name[w]}"?', "vendors",
             [vend(v) for v in sorted(wv[w])],
             f'MATCH (:Weakness {{weakness_id: {lit(w)}}})<-[:HAS_WEAKNESS]-(:CVE)-[:AFFECTS]->(:Product)<-[:PRODUCES]-(v:Vendor) '
-            f'RETURN DISTINCT v.name AS name')
+            f'RETURN DISTINCT v.name AS name',
+            sorted(c for c in weakness_cves[w] if c in in_corpus and any(p in vendor_of for p in cve_products[c])))
 
     for v in sorted((v for v in vendor_products if len(vendor_products[v]) >= 3), key=lambda v: (-len(vendor_products[v]), v))[:2]:
         p = sorted(vendor_products[v], key=lambda x: products[x]["name"])[0]
@@ -145,7 +151,8 @@ def build(g: dict) -> list[dict]:
         add("B", "3", f"Which other products made by the same vendor as {products[p]['name']} are affected by CVEs in the corpus?",
             "products", [prod(o) for o in others],
             f'MATCH (:Product {{product_id: {lit(p)}}})<-[:PRODUCES]-(:Vendor)-[:PRODUCES]->(o:Product) '
-            f'WHERE o.product_id <> {lit(p)} RETURN DISTINCT o.name AS name')
+            f'WHERE o.product_id <> {lit(p)} RETURN DISTINCT o.name AS name',
+            sorted({c for o in others for c in product_cves[o]}))
 
     # -------------------------------------------------------------- C aggregation
     counts = {v: len(cs & in_corpus) for v, cs in vendor_cves.items()}
@@ -154,20 +161,24 @@ def build(g: dict) -> list[dict]:
         add("C", "1", "Which vendor has the most CVEs in the corpus?", "vendors",
             [vend(v) for v in sorted(v for v, n in counts.items() if n == top)],
             'MATCH (v:Vendor)-[:PRODUCES]->(:Product)<-[:AFFECTS]-(c:CVE) WITH v, count(DISTINCT c) AS n '
-            'WITH max(n) AS m, collect([v.name, n]) AS xs UNWIND xs AS x WITH x, m WHERE x[1] = m RETURN x[0] AS name')
+            'WITH max(n) AS m, collect([v.name, n]) AS xs UNWIND xs AS x WITH x, m WHERE x[1] = m RETURN x[0] AS name',
+            sorted(set().union(*(vendor_cves[v] for v, n in counts.items() if n == top)) & in_corpus))
         mid = sorted(v for v, n in counts.items() if 2 <= n <= 8)
         for v in rng.sample(mid, min(2, len(mid))):
             add("C", "2", f"How many CVEs affect {vendors[v]['name']} products?", "number", {"value": counts[v]},
-                f'MATCH (:Vendor {{vendor_id: {lit(v)}}})-[:PRODUCES]->(:Product)<-[:AFFECTS]-(c:CVE) RETURN count(DISTINCT c) AS n')
+                f'MATCH (:Vendor {{vendor_id: {lit(v)}}})-[:PRODUCES]->(:Product)<-[:AFFECTS]-(c:CVE) RETURN count(DISTINCT c) AS n',
+                sorted(vendor_cves[v] & in_corpus))
         add("C", "3", "How many CVEs in the corpus are part of an exploit chain?", "number",
             {"value": sum(1 for c in in_corpus if chain.get(c))},
-            'MATCH (c:CVE) WHERE c.in_corpus AND (c)-[:CHAINED_WITH]-() RETURN count(c) AS n')
+            'MATCH (c:CVE) WHERE c.in_corpus AND (c)-[:CHAINED_WITH]-() RETURN count(c) AS n',
+            sorted(c for c in in_corpus if chain.get(c)))
         add("C", "4", "Which products are affected by more than one CVE?", "products",
             [prod(p) for p in sorted(multi)],
-            'MATCH (c:CVE)-[:AFFECTS]->(p:Product) WITH p, count(DISTINCT c) AS n WHERE n > 1 RETURN p.name AS name')
+            'MATCH (c:CVE)-[:AFFECTS]->(p:Product) WITH p, count(DISTINCT c) AS n WHERE n > 1 RETURN p.name AS name',
+            sorted(set().union(*(product_cves[p] for p in multi))))
         add("C", "5", "How many different vendors are affected by CVEs in the corpus?", "number",
             {"value": sum(1 for n in counts.values() if n > 0)},
-            'MATCH (v:Vendor)-[:PRODUCES]->(:Product)<-[:AFFECTS]-(:CVE) RETURN count(DISTINCT v) AS n')
+            'MATCH (v:Vendor)-[:PRODUCES]->(:Product)<-[:AFFECTS]-(:CVE) RETURN count(DISTINCT v) AS n', [])
 
     # ----------------------------------------------------------------- D semantic
     for question, kws in SEMANTIC:
@@ -177,7 +188,7 @@ def build(g: dict) -> list[dict]:
             continue
         add("D", "1", question, "cves", [cve_item(c) for c in gold],
             f'MATCH (c:CVE) WHERE c.in_corpus AND any(k IN {lit(kws)} WHERE toLower(c.text) CONTAINS k) '
-            f'RETURN c.cve_id AS name', quality="silver (keyword match on the CVE text)")
+            f'RETURN c.cve_id AS name', gold, quality="silver (keyword match on the CVE text)")
     return qs
 
 

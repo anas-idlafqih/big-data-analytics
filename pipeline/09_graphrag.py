@@ -34,6 +34,7 @@ QUERY_PREFIX = os.environ.get("EMBED_QUERY_PREFIX", "search_query: ")
 CVE_RE = re.compile(r"CVE-\d{4}-\d{4,}")
 MAX_LINKED = 6      # CVEs added by entity linking
 MAX_CHAINED = 6     # CVEs added by the exploit-chain hop
+SEED_VECTOR_K = 0   # vector hits kept when the question names CVE ids that exist in the graph
 
 SYSTEM = (
     "You answer questions about software vulnerabilities using ONLY the context provided. "
@@ -105,7 +106,10 @@ def answer(question: str, mode: str = "graph", k: int = 5, driver=None, num_ctx:
         if mode == "graph":
             # entity linking, part 1: CVE ids written in the question (embeddings are poor at exact ids)
             seeds = list(dict.fromkeys(CVE_RE.findall(question)))
-            ids = seeds + [c for c in ids if c not in seeds]
+            known = {f["cve_id"] for f in facts(session, seeds)}
+            seeds = [c for c in seeds if c in known]
+            # an explicit entity is an exact lookup: it defines the context, vector hits would only add noise
+            ids = seeds + [c for c in (ids[:SEED_VECTOR_K] if seeds else ids) if c not in seeds]
             linked = [c for c in (r.data()["cve_id"] for r in session.run(LINK_QUERY, {"q": question, "limit": MAX_LINKED}))
                       if c not in ids]
             main = facts(session, ids + linked)

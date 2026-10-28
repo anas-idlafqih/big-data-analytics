@@ -63,6 +63,9 @@
         }
       ],
       "gold_cypher": "MATCH (:CVE {cve_id: \"CVE-2026-21589\"})-[:AFFECTS]->(p:Product) RETURN DISTINCT p.name AS name",
+      "evidence": [
+        "CVE-2026-21589"
+      ],
       "gold_quality": "exact (graph)"
     },
     {
@@ -85,6 +88,9 @@
         }
       ],
       "gold_cypher": "MATCH (:CVE {cve_id: \"CVE-2025-25249\"})-[:AFFECTS]->(p:Product) RETURN DISTINCT p.name AS name",
+      "evidence": [
+        "CVE-2025-25249"
+      ],
       "gold_quality": "exact (graph)"
     },
     {
@@ -101,6 +107,9 @@
         }
       ],
       "gold_cypher": "MATCH (v:Vendor)-[:PRODUCES]->(:Product {product_id: \"p:microsoft:windowsshell\"}) RETURN DISTINCT v.name AS name",
+      "evidence": [
+        "CVE-2026-96951"
+      ],
       "gold_quality": "exact (graph)"
     },
     {
@@ -117,6 +126,10 @@
         }
       ],
       "gold_cypher": "MATCH (v:Vendor)-[:PRODUCES]->(:Product {product_id: \"p:arista:velocloudorchestrator\"}) RETURN DISTINCT v.name AS name",
+      "evidence": [
+        "CVE-2026-114625",
+        "CVE-2026-93952"
+      ],
       "gold_quality": "exact (graph)"
     },
     {
@@ -143,6 +156,12 @@
         }
       ],
       "gold_cypher": "MATCH (c:CVE)-[:AFFECTS]->(:Product {product_id: \"p:citrix:netscaleradc\"}) RETURN DISTINCT c.cve_id AS name",
+      "evidence": [
+        "CVE-2026-19490",
+        "CVE-2026-88771",
+        "CVE-2026-88772",
+        "CVE-2026-88779"
+      ],
       "gold_quality": "exact (graph)"
     },
     {
@@ -161,6 +180,10 @@
         }
       ],
       "gold_cypher": "MATCH (c:CVE)-[:AFFECTS]->(:Product {product_id: \"p:adobe:commerce\"}) RETURN DISTINCT c.cve_id AS name",
+      "evidence": [
+        "CVE-2026-71362",
+        "CVE-2026-75650"
+      ],
       "gold_quality": "exact (graph)"
     },
     {
@@ -177,6 +200,10 @@
         }
       ],
       "gold_cypher": "MATCH (:CVE {cve_id: \"CVE-2026-102489\"})-[:CHAINED_WITH]-(:CVE)-[:AFFECTS]->(p:Product) RETURN DISTINCT p.name AS name",
+      "evidence": [
+        "CVE-2026-102489",
+        "CVE-2026-102490"
+      ],
       "gold_quality": "exact (graph)"
     },
     {
@@ -193,6 +220,10 @@
         }
       ],
       "gold_cypher": "MATCH (:CVE {cve_id: \"CVE-2026-105133\"})-[:CHAINED_WITH]-(:CVE)-[:AFFECTS]->(p:Product) RETURN DISTINCT p.name AS name",
+      "evidence": [
+        "CVE-2026-105133",
+        "CVE-2026-105134"
+      ],
       "gold_quality": "exact (graph)"
     },
     {
@@ -239,6 +270,14 @@
         }
       ],
       "gold_cypher": "MATCH (:Weakness {weakness_id: \"remote code execution\"})<-[:HAS_WEAKNESS]-(:CVE)-[:AFFECTS]->(:Product)<-[:PRODUCES]-(v:Vendor) RETURN DISTINCT v.name AS name",
+      "evidence": [
+        "CVE-2021-3199",
+        "CVE-2026-0322",
+        "CVE-2026-102489",
+        "CVE-2026-5430",
+        "CVE-2026-88772",
+        "CVE-2026-94127"
+      ],
       "gold_quality": "exact (graph)"
     },
     {
@@ -279,6 +318,15 @@
         }
       ],
       "gold_cypher": "MATCH (:Weakness {weakness_id: \"authentication bypass\"})<-[:HAS_WEAKNESS]-(:CVE)-[:AFFECTS]->(:Product)<-[:PRODUCES]-(v:Vendor) RETURN DISTINCT v.name AS name",
+      "evidence": [
+        "CVE-2025-25249",
+        "CVE-2026-102764",
+        "CVE-2026-104935",
+        "CVE-2026-19490",
+        "CVE-2026-20079",
+        "CVE-2026-76460",
+        "CVE-2026-76504"
+      ],
       "gold_quality": "exact (graph)"
     },
     {
@@ -331,6 +379,9 @@
         }
       ],
       "gold_cypher": "MATCH (:Product {product_id: \"p:atlassian:bamboodatacenter\"})<-[:PRODUCES]-(:Vendor)-[:PRODUCES]->(o:Product) WHERE o.product_id <> \"p:atlassian:bamboodatacenter\" RETURN DISTINCT o.name AS name",
+      "evidence": [
+        "CVE-2026-21589"
+      ],
       "gold_quality": "exact (graph)"
     },
     {
@@ -365,6 +416,10 @@
         }
       ],
       "gold_cypher": "MATCH (:Product {product_id: \"p:fortinet:fortimail\"})<-[:PRODUCES]-(:Vendor)-[:PRODUCES]->(o:Product) WHERE o.product_id <> \"p:fortinet:fortimail\" RETURN DISTINCT o.name AS name",
+      "evidence": [
+        "CVE-2025-25249",
+        "CVE-2025-61624"
+      ],
       "gold_quality": "exact (graph)"
     },
     {
@@ -381,6 +436,13 @@
         }
       ],
       "gold_cypher": "MATCH (v:Vendor)-[:PRODUCES]->(:Product)<-[:AFFECTS]-(c:CVE) WITH v, count(DISTINCT c) AS n WITH max(n) AS m, collect([v.name, n]) AS xs UNWIND xs AS x WITH x, m WHERE x[1] = m RETURN x[0] AS name",
+      "evidence": [
+        "CVE-2026-20079",
+        "CVE-2026-76460",
+        "CVE-2026-76461",
+        "CVE-2026-76504",
+        "CVE-2026-76519"
+      ],
       "gold_quality": "exact (graph)"
     },
     {
@@ -392,6 +454,10 @@
         "value": 2
       },
       "gold_cypher": "MATCH (:Vendor {vendor_id: \"v:adobe\"})-[:PRODUCES]->(:Product)<-[:AFFECTS]-(c:CVE) RETURN count(DISTINCT c) AS n",
+      "evidence": [
+        "CVE-2026-71362",
+        "CVE-2026-75650"
+      ],
       "gold_quality": "exact (graph)"
     },
     {
@@ -403,6 +469,12 @@
         "value": 4
       },
       "gold_cypher": "MATCH (:Vendor {vendor_id: \"v:plex\"})-[:PRODUCES]->(:Product)<-[:AFFECTS]-(c:CVE) RETURN count(DISTINCT c) AS n",
+      "evidence": [
+        "CVE-2026-96652",
+        "CVE-2026-96654",
+        "CVE-2026-96655",
+        "CVE-2026-96656"
+      ],
       "gold_quality": "exact (graph)"
     },
     {
@@ -414,6 +486,17 @@
         "value": 9
       },
       "gold_cypher": "MATCH (c:CVE) WHERE c.in_corpus AND (c)-[:CHAINED_WITH]-() RETURN count(c) AS n",
+      "evidence": [
+        "CVE-2023-22894",
+        "CVE-2026-102489",
+        "CVE-2026-102490",
+        "CVE-2026-105133",
+        "CVE-2026-105134",
+        "CVE-2026-96652",
+        "CVE-2026-96654",
+        "CVE-2026-96655",
+        "CVE-2026-96656"
+      ],
       "gold_quality": "exact (graph)"
     },
     {
@@ -502,6 +585,36 @@
         }
       ],
       "gold_cypher": "MATCH (c:CVE)-[:AFFECTS]->(p:Product) WITH p, count(DISTINCT c) AS n WHERE n > 1 RETURN p.name AS name",
+      "evidence": [
+        "CVE-2025-25249",
+        "CVE-2025-39682",
+        "CVE-2025-39964",
+        "CVE-2025-61624",
+        "CVE-2026-102489",
+        "CVE-2026-102490",
+        "CVE-2026-105133",
+        "CVE-2026-105134",
+        "CVE-2026-114625",
+        "CVE-2026-19490",
+        "CVE-2026-42016",
+        "CVE-2026-42018",
+        "CVE-2026-53266",
+        "CVE-2026-67277",
+        "CVE-2026-67279",
+        "CVE-2026-71362",
+        "CVE-2026-75650",
+        "CVE-2026-76461",
+        "CVE-2026-76519",
+        "CVE-2026-86060",
+        "CVE-2026-88771",
+        "CVE-2026-88772",
+        "CVE-2026-88779",
+        "CVE-2026-93952",
+        "CVE-2026-96652",
+        "CVE-2026-96654",
+        "CVE-2026-96655",
+        "CVE-2026-96656"
+      ],
       "gold_quality": "exact (graph)"
     },
     {
@@ -513,6 +626,7 @@
         "value": 31
       },
       "gold_cypher": "MATCH (v:Vendor)-[:PRODUCES]->(:Product)<-[:AFFECTS]-(:CVE) RETURN count(DISTINCT v) AS n",
+      "evidence": [],
       "gold_quality": "exact (graph)"
     },
     {
@@ -556,13 +670,20 @@
         {
           "name": "CVE-2026-93616",
           "aliases": []
-        },
-        {
-          "name": "CVE-2026-96656",
-          "aliases": []
         }
       ],
-      "gold_cypher": "MATCH (c:CVE) WHERE c.in_corpus AND any(k IN [\"path traversal\", \"directory traversal\", \"arbitrary file\", \"read arbitrary files\", \"files or directories accessible\"] WHERE toLower(c.text) CONTAINS k) RETURN c.cve_id AS name",
+      "gold_cypher": "MATCH (c:CVE) WHERE c.in_corpus AND any(k IN [\"path traversal\", \"directory traversal\", \"read arbitrary files\", \"arbitrary file read\", \"arbitrary file access\", \"read and write to arbitrary files\", \"files or directories accessible\", \"access specific files\"] WHERE toLower(c.text) CONTAINS k) RETURN c.cve_id AS name",
+      "evidence": [
+        "CVE-2015-3306",
+        "CVE-2021-3199",
+        "CVE-2025-61624",
+        "CVE-2026-104286",
+        "CVE-2026-21589",
+        "CVE-2026-5430",
+        "CVE-2026-76519",
+        "CVE-2026-85706",
+        "CVE-2026-93616"
+      ],
       "gold_quality": "silver (keyword match on the CVE text)"
     },
     {
@@ -613,6 +734,18 @@
         }
       ],
       "gold_cypher": "MATCH (c:CVE) WHERE c.in_corpus AND any(k IN [\"authentication bypass\", \"bypass authentication\", \"improper authentication\", \"missing authentication\"] WHERE toLower(c.text) CONTAINS k) RETURN c.cve_id AS name",
+      "evidence": [
+        "CVE-2026-102764",
+        "CVE-2026-104935",
+        "CVE-2026-105133",
+        "CVE-2026-19490",
+        "CVE-2026-20079",
+        "CVE-2026-42018",
+        "CVE-2026-67277",
+        "CVE-2026-76460",
+        "CVE-2026-76504",
+        "CVE-2026-85706"
+      ],
       "gold_quality": "silver (keyword match on the CVE text)"
     },
     {
@@ -707,6 +840,29 @@
         }
       ],
       "gold_cypher": "MATCH (c:CVE) WHERE c.in_corpus AND any(k IN [\"remote code execution\", \"arbitrary code\", \"command injection\", \"execute arbitrary commands\"] WHERE toLower(c.text) CONTAINS k) RETURN c.cve_id AS name",
+      "evidence": [
+        "CVE-2016-3081",
+        "CVE-2021-3199",
+        "CVE-2023-22894",
+        "CVE-2026-0322",
+        "CVE-2026-102489",
+        "CVE-2026-104935",
+        "CVE-2026-105134",
+        "CVE-2026-106931",
+        "CVE-2026-110936",
+        "CVE-2026-5430",
+        "CVE-2026-75650",
+        "CVE-2026-76461",
+        "CVE-2026-85102",
+        "CVE-2026-86218",
+        "CVE-2026-86950",
+        "CVE-2026-87491",
+        "CVE-2026-87902",
+        "CVE-2026-88771",
+        "CVE-2026-88772",
+        "CVE-2026-94127",
+        "CVE-2026-96951"
+      ],
       "gold_quality": "silver (keyword match on the CVE text)"
     },
     {
@@ -733,6 +889,12 @@
         }
       ],
       "gold_cypher": "MATCH (c:CVE) WHERE c.in_corpus AND any(k IN [\"denial of service\"] WHERE toLower(c.text) CONTAINS k) RETURN c.cve_id AS name",
+      "evidence": [
+        "CVE-2015-5477",
+        "CVE-2026-67277",
+        "CVE-2026-88772",
+        "CVE-2026-88779"
+      ],
       "gold_quality": "silver (keyword match on the CVE text)"
     }
   ]

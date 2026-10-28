@@ -1,0 +1,1895 @@
+{
+ "A1-1|oracle_cypher": {
+  "answer": "Confluence Data Center; Crucible; Bamboo Data Center; Jira Software Data Center; Fisheye; Bitbucket Data Center; Jira Service Management Data Center; Crowd Data Center",
+  "latency_s": 2.0115,
+  "cypher": "MATCH (:CVE {cve_id: \"CVE-2026-21589\"})-[:AFFECTS]->(p:Product) RETURN DISTINCT p.name AS name",
+  "precision": 1.0,
+  "recall": 1.0,
+  "f1": 1.0,
+  "exact": true,
+  "predicted": [
+   "Bamboo Data Center",
+   "Bitbucket Data Center",
+   "Confluence Data Center",
+   "Crowd Data Center",
+   "Crucible",
+   "Fisheye",
+   "Jira Service Management Data Center",
+   "Jira Software Data Center"
+  ],
+  "version": "v1"
+ },
+ "A1-1|vector": {
+  "answer": "No information about CVE-2026-21589 is provided in the context.",
+  "sources": [],
+  "latency_s": 44.19,
+  "prompt_tokens": 673,
+  "output_tokens": 29,
+  "context_cves": [
+   "CVE-2026-96654",
+   "CVE-2026-75650",
+   "CVE-2026-102764",
+   "CVE-2026-86218",
+   "CVE-2026-96656"
+  ],
+  "precision": 0.0,
+  "recall": 0.0,
+  "f1": 0.0,
+  "exact": false,
+  "predicted": [],
+  "version": "v1"
+ },
+ "A1-1|graph": {
+  "answer": "Bitbucket Data Center, Confluence Data Center, Jira Service Management Data Center, Jira Software Data Center, Bamboo Data Center, Crowd Data Center, Crucible, Fisheye",
+  "sources": [
+   "CVE-2026-21589"
+  ],
+  "latency_s": 24.56,
+  "prompt_tokens": 291,
+  "output_tokens": 60,
+  "context_cves": [
+   "CVE-2026-21589"
+  ],
+  "precision": 1.0,
+  "recall": 1.0,
+  "f1": 1.0,
+  "exact": true,
+  "predicted": [
+   "Bamboo Data Center",
+   "Bitbucket Data Center",
+   "Confluence Data Center",
+   "Crowd Data Center",
+   "Crucible",
+   "Fisheye",
+   "Jira Service Management Data Center",
+   "Jira Software Data Center"
+  ],
+  "version": "v2"
+ },
+ "A1-1|text2cypher": {
+  "answer": "Confluence Data Center; Crucible; Bamboo Data Center; Jira Software Data Center; Fisheye; Bitbucket Data Center; Jira Service Management Data Center; Crowd Data Center",
+  "latency_s": 48.94,
+  "prompt_tokens": 541,
+  "output_tokens": 41,
+  "cypher": "MATCH (:CVE {cve_id: 'CVE-2026-21589'})-[:AFFECTS]->(p:Product) RETURN DISTINCT p.name AS name",
+  "attempts": 1,
+  "error": null,
+  "precision": 1.0,
+  "recall": 1.0,
+  "f1": 1.0,
+  "exact": true,
+  "predicted": [
+   "Bamboo Data Center",
+   "Bitbucket Data Center",
+   "Confluence Data Center",
+   "Crowd Data Center",
+   "Crucible",
+   "Fisheye",
+   "Jira Service Management Data Center",
+   "Jira Software Data Center"
+  ],
+  "version": "v2"
+ },
+ "B1-1|oracle_cypher": {
+  "answer": "Zammad",
+  "latency_s": 1.4446,
+  "cypher": "MATCH (:CVE {cve_id: \"CVE-2026-102489\"})-[:CHAINED_WITH]-(:CVE)-[:AFFECTS]->(p:Product) RETURN DISTINCT p.name AS name",
+  "precision": 1.0,
+  "recall": 1.0,
+  "f1": 1.0,
+  "exact": true,
+  "predicted": [
+   "Zammad"
+  ],
+  "version": "v1"
+ },
+ "B1-1|vector": {
+  "answer": "None",
+  "sources": [],
+  "latency_s": 35.92,
+  "prompt_tokens": 729,
+  "output_tokens": 15,
+  "context_cves": [
+   "CVE-2026-102764",
+   "CVE-2026-96654",
+   "CVE-2026-96655",
+   "CVE-2015-5477",
+   "CVE-2026-96656"
+  ],
+  "precision": 0.0,
+  "recall": 0.0,
+  "f1": 0.0,
+  "exact": false,
+  "predicted": [],
+  "version": "v1"
+ },
+ "B1-1|graph": {
+  "answer": "Zammad",
+  "sources": [
+   "CVE-2026-102489",
+   "CVE-2026-102490"
+  ],
+  "latency_s": 15.84,
+  "prompt_tokens": 331,
+  "output_tokens": 33,
+  "context_cves": [
+   "CVE-2026-102489",
+   "CVE-2026-102490"
+  ],
+  "precision": 1.0,
+  "recall": 1.0,
+  "f1": 1.0,
+  "exact": true,
+  "predicted": [
+   "Zammad"
+  ],
+  "version": "v2"
+ },
+ "B1-1|text2cypher": {
+  "answer": "Zammad",
+  "latency_s": 34.45,
+  "prompt_tokens": 549,
+  "output_tokens": 49,
+  "cypher": "MATCH (:CVE {cve_id: 'CVE-2026-102489'})-[:CHAINED_WITH]->(:CVE)-[:AFFECTS]->(p:Product) RETURN DISTINCT p.name AS name",
+  "attempts": 1,
+  "error": null,
+  "precision": 1.0,
+  "recall": 1.0,
+  "f1": 1.0,
+  "exact": true,
+  "predicted": [
+   "Zammad"
+  ],
+  "version": "v2"
+ },
+ "C1-1|oracle_cypher": {
+  "answer": "Cisco",
+  "latency_s": 0.8352,
+  "cypher": "MATCH (v:Vendor)-[:PRODUCES]->(:Product)<-[:AFFECTS]-(c:CVE) WITH v, count(DISTINCT c) AS n WITH max(n) AS m, collect([v.name, n]) AS xs UNWIND xs AS x WITH x, m WHERE x[1] = m RETURN x[0] AS name",
+  "precision": 1.0,
+  "recall": 1.0,
+  "f1": 1.0,
+  "exact": true,
+  "predicted": [
+   "Cisco"
+  ],
+  "version": "v1"
+ },
+ "C1-1|vector": {
+  "answer": "Adobe Commerce and Magento",
+  "sources": [
+   "CVE-2026-71362",
+   "CVE-2026-75650",
+   "CVE-2026-96656"
+  ],
+  "latency_s": 64.71,
+  "prompt_tokens": 641,
+  "output_tokens": 130,
+  "context_cves": [
+   "CVE-2026-96656",
+   "CVE-2026-75650",
+   "CVE-2026-65660",
+   "CVE-2015-5477",
+   "CVE-2026-71362"
+  ],
+  "precision": 0.0,
+  "recall": 0.0,
+  "f1": 0.0,
+  "exact": false,
+  "predicted": [
+   "Adobe"
+  ],
+  "version": "v1"
+ },
+ "C1-1|graph": {
+  "answer": "Adobe",
+  "sources": [
+   "CVE-2026-71362",
+   "CVE-2026-75650",
+   "CVE-2026-96652",
+   "CVE-2026-96654",
+   "CVE-2026-96655"
+  ],
+  "latency_s": 48.49,
+  "prompt_tokens": 932,
+  "output_tokens": 67,
+  "context_cves": [
+   "CVE-2026-96656",
+   "CVE-2026-75650",
+   "CVE-2026-65660",
+   "CVE-2015-5477",
+   "CVE-2026-71362",
+   "CVE-2026-96655",
+   "CVE-2026-96654",
+   "CVE-2026-96652"
+  ],
+  "precision": 0.0,
+  "recall": 0.0,
+  "f1": 0.0,
+  "exact": false,
+  "predicted": [
+   "Adobe"
+  ],
+  "version": "v2"
+ },
+ "C1-1|text2cypher": {
+  "answer": "",
+  "latency_s": 73.36,
+  "prompt_tokens": 1296,
+  "output_tokens": 165,
+  "cypher": "MATCH (c:CVE {in_corpus: true})-[:HAS_WEAKNESS]->(w:Weakness)-[:CHAINED_WITH]->(c2:CVE) WHERE c2.cve_id = c.cve_id AND c2.in_corpus = true RETURN DISTINCT c.vendor_id AS vendor_id, COUNT(DISTINCT c) AS n",
+  "attempts": 2,
+  "error": null,
+  "precision": 0.0,
+  "recall": 0.0,
+  "f1": 0.0,
+  "exact": false,
+  "predicted": [],
+  "version": "v2"
+ },
+ "D1-1|oracle_cypher": {
+  "answer": "CVE-2026-104286; CVE-2015-3306; CVE-2026-21589; CVE-2026-5430; CVE-2026-76519; CVE-2025-61624; CVE-2026-93616; CVE-2021-3199; CVE-2026-85706",
+  "latency_s": 0.0145,
+  "cypher": "MATCH (c:CVE) WHERE c.in_corpus AND any(k IN [\"path traversal\", \"directory traversal\", \"read arbitrary files\", \"arbitrary file read\", \"arbitrary file access\", \"read and write to arbitrary files\", \"files or directories accessible\", \"access specific files\"] WHERE toLower(c.text) CONTAINS k) RETURN c.cve_id AS name",
+  "precision": 1.0,
+  "recall": 1.0,
+  "f1": 1.0,
+  "exact": true,
+  "predicted": [
+   "CVE-2015-3306",
+   "CVE-2021-3199",
+   "CVE-2025-61624",
+   "CVE-2026-104286",
+   "CVE-2026-21589",
+   "CVE-2026-5430",
+   "CVE-2026-76519",
+   "CVE-2026-85706",
+   "CVE-2026-93616"
+  ]
+ },
+ "D1-1|vector": {
+  "answer": "The vulnerabilities that allow an attacker to read or access files they should not be able to reach are CVE-2026-20079, CVE-2026-76519, CVE-2026-93616, and CVE-2026-21589. Specifically, CVE-2026-20079 allows an attacker to execute scripts on an affected device to obtain root access, CVE-2026-76519 allows an attacker to write arbitrary files and execute commands with root privileges, CVE-2026-93616 allows an attacker to upload and execute arbitrary scripts, and CVE-2026-21589 allows an attacker to access specific files within the web application root directory.",
+  "sources": [
+   "CVE-2026-20079",
+   "CVE-2026-21589",
+   "CVE-2026-76519",
+   "CVE-2026-93616"
+  ],
+  "latency_s": 33.09,
+  "prompt_tokens": 699,
+  "output_tokens": 191,
+  "context_cves": [
+   "CVE-2026-20079",
+   "CVE-2026-76519",
+   "CVE-2026-93616",
+   "CVE-2026-21589",
+   "CVE-2026-81963"
+  ],
+  "precision": 0.75,
+  "recall": 0.3333333333333333,
+  "f1": 0.46153846153846156,
+  "exact": false,
+  "predicted": [
+   "CVE-2026-20079",
+   "CVE-2026-21589",
+   "CVE-2026-76519",
+   "CVE-2026-93616"
+  ]
+ },
+ "D1-1|graph": {
+  "answer": "The vulnerabilities that allow an attacker to read or access files they should not be able to reach are: relative path traversal (CVE-2026-76519) and files or directories accessible to external parties (CVE-2026-21589).",
+  "sources": [
+   "CVE-2026-21589",
+   "CVE-2026-76519"
+  ],
+  "latency_s": 18.77,
+  "prompt_tokens": 649,
+  "output_tokens": 85,
+  "context_cves": [
+   "CVE-2026-20079",
+   "CVE-2026-76519",
+   "CVE-2026-93616",
+   "CVE-2026-21589",
+   "CVE-2026-81963"
+  ],
+  "precision": 1.0,
+  "recall": 0.2222222222222222,
+  "f1": 0.3636363636363636,
+  "exact": false,
+  "predicted": [
+   "CVE-2026-21589",
+   "CVE-2026-76519"
+  ]
+ },
+ "D1-1|text2cypher": {
+  "answer": "CVE-2026-93952; improper input validation; CVE-2026-76460; authentication bypass; CVE-2026-0322; Remote Code Execution; CVE-2026-0322; code injection; CVE-2015-3306; arbitrary file read; CVE-2015-3306; arbitrary file write; CVE-2015-3306; improper access control; CVE-2026-71362; Incorrect Authorization; CVE-2026-21589; files or directories accessible to external parties; CVE-2026-21589; arbitrary file access; CVE-2026-42018; anonymous token exposure; CVE-2026-42018; improper authentication; CVE-2026-76504; URI encoding vulnerability; CVE-2026-76504; hex encoding vulnerability; CVE-2026-76504; authentication bypass; CVE-2026-5430; Remote Code Execution; CVE-2026-5430; path traversal; CVE-2026-5430; unrestricted file upload; CVE-2026-114625; SQL injection; CVE-2026-81963; link following; CVE-2026-81963; privilege escalation; CVE-2025-61624; path traversal; CVE-2026-85706; path traversal; CVE-2026-85706; arbitrary file read; CVE-2026-94127; heap-based buffer overflow; CVE-2026-94127; Remote Code Execution; CVE-2026-20079; authentication bypass; CVE-2025-39682; improper check for unusual or exceptional conditions; CVE-2025-39682; zero-length record bypass; CVE-2026-87902; remote file inclusion; CVE-2026-87902; Remote Code Execution; CVE-2026-53266; out of bounds write; CVE-2026-53266; ARP sender hardware address rewrite; CVE-2023-22894; query filter vulnerability; CVE-2023-22894; Remote Code Execution; CVE-2023-22894; cleartext storage of sensitive information; CVE-2026-85102; certificate trust validation vulnerability; CVE-2026-85102; arbitrary code execution",
+  "latency_s": 17.2,
+  "prompt_tokens": 490,
+  "output_tokens": 63,
+  "cypher": "MATCH (c:CVE)-[:HAS_WEAKNESS]->(w:Weakness) WHERE toLower(c.text) CONTAINS 'read' OR toLower(c.text) CONTAINS 'access' RETURN DISTINCT c.cve_id AS cve_id, w.name AS weakness_name",
+  "attempts": 1,
+  "error": null,
+  "precision": 0.25,
+  "recall": 0.5555555555555556,
+  "f1": 0.3448275862068966,
+  "exact": false,
+  "predicted": [
+   "CVE-2015-3306",
+   "CVE-2023-22894",
+   "CVE-2025-39682",
+   "CVE-2025-61624",
+   "CVE-2026-0322",
+   "CVE-2026-114625",
+   "CVE-2026-20079",
+   "CVE-2026-21589",
+   "CVE-2026-42018",
+   "CVE-2026-53266",
+   "CVE-2026-5430",
+   "CVE-2026-71362",
+   "CVE-2026-76460",
+   "CVE-2026-76504",
+   "CVE-2026-81963",
+   "CVE-2026-85102",
+   "CVE-2026-85706",
+   "CVE-2026-87902",
+   "CVE-2026-93952",
+   "CVE-2026-94127"
+  ]
+ },
+ "A1-2|oracle_cypher": {
+  "answer": "FortiOS; FortiSwitchManager",
+  "latency_s": 0.2016,
+  "cypher": "MATCH (:CVE {cve_id: \"CVE-2025-25249\"})-[:AFFECTS]->(p:Product) RETURN DISTINCT p.name AS name",
+  "precision": 1.0,
+  "recall": 1.0,
+  "f1": 1.0,
+  "exact": true,
+  "predicted": [
+   "FortiOS",
+   "FortiSwitchManager"
+  ],
+  "version": "v1"
+ },
+ "A1-2|vector": {
+  "answer": "No information about CVE-2025-25249 is provided in the context.",
+  "sources": [],
+  "latency_s": 60.22,
+  "prompt_tokens": 719,
+  "output_tokens": 29,
+  "context_cves": [
+   "CVE-2026-75650",
+   "CVE-2026-96654",
+   "CVE-2026-96655",
+   "CVE-2026-87886",
+   "CVE-2026-104935"
+  ],
+  "precision": 0.0,
+  "recall": 0.0,
+  "f1": 0.0,
+  "exact": false,
+  "predicted": [],
+  "version": "v1"
+ },
+ "A1-2|graph": {
+  "answer": "Fortinet FortiOS, FortiSwitchManager",
+  "sources": [
+   "CVE-2025-25249"
+  ],
+  "latency_s": 18.42,
+  "prompt_tokens": 208,
+  "output_tokens": 31,
+  "context_cves": [
+   "CVE-2025-25249"
+  ],
+  "precision": 1.0,
+  "recall": 1.0,
+  "f1": 1.0,
+  "exact": true,
+  "predicted": [
+   "FortiOS",
+   "FortiSwitchManager"
+  ],
+  "version": "v2"
+ },
+ "A1-2|text2cypher": {
+  "answer": "FortiOS; FortiSwitchManager",
+  "latency_s": 55.18,
+  "prompt_tokens": 541,
+  "output_tokens": 41,
+  "cypher": "MATCH (:CVE {cve_id: 'CVE-2025-25249'})-[:AFFECTS]->(p:Product) RETURN DISTINCT p.name AS name",
+  "attempts": 1,
+  "error": null,
+  "precision": 1.0,
+  "recall": 1.0,
+  "f1": 1.0,
+  "exact": true,
+  "predicted": [
+   "FortiOS",
+   "FortiSwitchManager"
+  ],
+  "version": "v2"
+ },
+ "A2-1|oracle_cypher": {
+  "answer": "Microsoft",
+  "latency_s": 0.8349,
+  "cypher": "MATCH (v:Vendor)-[:PRODUCES]->(:Product {product_id: \"p:microsoft:windowsshell\"}) RETURN DISTINCT v.name AS name",
+  "precision": 1.0,
+  "recall": 1.0,
+  "f1": 1.0,
+  "exact": true,
+  "predicted": [
+   "Microsoft"
+  ],
+  "version": "v1"
+ },
+ "A2-1|vector": {
+  "answer": "Microsoft",
+  "sources": [
+   "CVE-2026-96951"
+  ],
+  "latency_s": 48.67,
+  "prompt_tokens": 665,
+  "output_tokens": 23,
+  "context_cves": [
+   "CVE-2026-96951",
+   "CVE-2026-106931",
+   "CVE-2026-65660",
+   "CVE-2026-105134",
+   "CVE-2026-67279"
+  ],
+  "precision": 1.0,
+  "recall": 1.0,
+  "f1": 1.0,
+  "exact": true,
+  "predicted": [
+   "Microsoft"
+  ],
+  "version": "v1"
+ },
+ "A2-1|graph": {
+  "answer": "Microsoft",
+  "sources": [
+   "CVE-2026-96951"
+  ],
+  "latency_s": 35.99,
+  "prompt_tokens": 744,
+  "output_tokens": 23,
+  "context_cves": [
+   "CVE-2026-96951",
+   "CVE-2026-106931",
+   "CVE-2026-65660",
+   "CVE-2026-105134",
+   "CVE-2026-67279",
+   "CVE-2026-85880",
+   "CVE-2026-105133"
+  ],
+  "precision": 1.0,
+  "recall": 1.0,
+  "f1": 1.0,
+  "exact": true,
+  "predicted": [
+   "Microsoft"
+  ],
+  "version": "v2"
+ },
+ "A2-1|text2cypher": {
+  "answer": "",
+  "latency_s": 42.42,
+  "prompt_tokens": 535,
+  "output_tokens": 44,
+  "cypher": "MATCH (v:Vendor)-[:PRODUCES]->(p:Product) WHERE toLower(v.name) CONTAINS toLower('Windows Shell') RETURN DISTINCT v.name AS name",
+  "attempts": 1,
+  "error": null,
+  "precision": 0.0,
+  "recall": 0.0,
+  "f1": 0.0,
+  "exact": false,
+  "predicted": [],
+  "version": "v2"
+ },
+ "A2-2|oracle_cypher": {
+  "answer": "Arista",
+  "latency_s": 0.1257,
+  "cypher": "MATCH (v:Vendor)-[:PRODUCES]->(:Product {product_id: \"p:arista:velocloudorchestrator\"}) RETURN DISTINCT v.name AS name",
+  "precision": 1.0,
+  "recall": 1.0,
+  "f1": 1.0,
+  "exact": true,
+  "predicted": [
+   "Arista"
+  ],
+  "version": "v1"
+ },
+ "A2-2|vector": {
+  "answer": "Arista",
+  "sources": [
+   "CVE-2026-114625",
+   "CVE-2026-93952"
+  ],
+  "latency_s": 47.69,
+  "prompt_tokens": 752,
+  "output_tokens": 34,
+  "context_cves": [
+   "CVE-2026-93952",
+   "CVE-2026-114625",
+   "CVE-2026-93616",
+   "CVE-2021-3199",
+   "CVE-2026-0322"
+  ],
+  "precision": 1.0,
+  "recall": 1.0,
+  "f1": 1.0,
+  "exact": true,
+  "predicted": [
+   "Arista"
+  ],
+  "version": "v1"
+ },
+ "A2-2|graph": {
+  "answer": "Arista",
+  "sources": [],
+  "latency_s": 29.91,
+  "prompt_tokens": 594,
+  "output_tokens": 17,
+  "context_cves": [
+   "CVE-2026-93952",
+   "CVE-2026-114625",
+   "CVE-2026-93616",
+   "CVE-2021-3199",
+   "CVE-2026-0322"
+  ],
+  "precision": 1.0,
+  "recall": 1.0,
+  "f1": 1.0,
+  "exact": true,
+  "predicted": [
+   "Arista"
+  ],
+  "version": "v2"
+ },
+ "A2-2|text2cypher": {
+  "answer": "",
+  "latency_s": 46.35,
+  "prompt_tokens": 539,
+  "output_tokens": 61,
+  "cypher": "MATCH (v:Vendor)-[:PRODUCES]->(p:Product) WHERE toLower(v.name) CONTAINS toLower('VeloCloud') AND toLower(p.name) CONTAINS toLower('Orchestrator') RETURN DISTINCT v.name AS name",
+  "attempts": 1,
+  "error": null,
+  "precision": 0.0,
+  "recall": 0.0,
+  "f1": 0.0,
+  "exact": false,
+  "predicted": [],
+  "version": "v2"
+ },
+ "A3-1|oracle_cypher": {
+  "answer": "CVE-2026-88779; CVE-2026-19490; CVE-2026-88771; CVE-2026-88772",
+  "latency_s": 0.5529,
+  "cypher": "MATCH (c:CVE)-[:AFFECTS]->(:Product {product_id: \"p:citrix:netscaleradc\"}) RETURN DISTINCT c.cve_id AS name",
+  "precision": 1.0,
+  "recall": 1.0,
+  "f1": 1.0,
+  "exact": true,
+  "predicted": [
+   "CVE-2026-19490",
+   "CVE-2026-88771",
+   "CVE-2026-88772",
+   "CVE-2026-88779"
+  ],
+  "version": "v1"
+ },
+ "A3-1|vector": {
+  "answer": "CVE-2026-88779, CVE-2026-88772, CVE-2026-19490, CVE-2026-88771",
+  "sources": [
+   "CVE-2026-19490",
+   "CVE-2026-88771",
+   "CVE-2026-88772",
+   "CVE-2026-88779"
+  ],
+  "latency_s": 65.37,
+  "prompt_tokens": 820,
+  "output_tokens": 80,
+  "context_cves": [
+   "CVE-2026-88779",
+   "CVE-2026-88772",
+   "CVE-2026-19490",
+   "CVE-2026-88771",
+   "CVE-2015-5477"
+  ],
+  "precision": 1.0,
+  "recall": 1.0,
+  "f1": 1.0,
+  "exact": true,
+  "predicted": [
+   "CVE-2026-19490",
+   "CVE-2026-88771",
+   "CVE-2026-88772",
+   "CVE-2026-88779"
+  ],
+  "version": "v1"
+ },
+ "A3-1|graph": {
+  "answer": "CVE-2026-88779, CVE-2026-19490, CVE-2026-88771",
+  "sources": [
+   "CVE-2026-19490",
+   "CVE-2026-88771",
+   "CVE-2026-88779"
+  ],
+  "latency_s": 29.74,
+  "prompt_tokens": 589,
+  "output_tokens": 63,
+  "context_cves": [
+   "CVE-2026-88779",
+   "CVE-2026-88772",
+   "CVE-2026-19490",
+   "CVE-2026-88771",
+   "CVE-2015-5477"
+  ],
+  "precision": 1.0,
+  "recall": 0.75,
+  "f1": 0.8571428571428571,
+  "exact": false,
+  "predicted": [
+   "CVE-2026-19490",
+   "CVE-2026-88771",
+   "CVE-2026-88779"
+  ],
+  "version": "v2"
+ },
+ "A3-1|text2cypher": {
+  "answer": "CVE-2026-88779; CVE-2026-19490; CVE-2026-88771; CVE-2026-88772",
+  "latency_s": 34.84,
+  "prompt_tokens": 537,
+  "output_tokens": 48,
+  "cypher": "MATCH (c:CVE)-[:AFFECTS]->(p:Product) WHERE toLower(p.name) CONTAINS toLower('NetScaler ADC') RETURN DISTINCT c.cve_id AS cve_id",
+  "attempts": 1,
+  "error": null,
+  "precision": 1.0,
+  "recall": 1.0,
+  "f1": 1.0,
+  "exact": true,
+  "predicted": [
+   "CVE-2026-19490",
+   "CVE-2026-88771",
+   "CVE-2026-88772",
+   "CVE-2026-88779"
+  ],
+  "version": "v2"
+ },
+ "A3-2|oracle_cypher": {
+  "answer": "CVE-2026-75650; CVE-2026-71362",
+  "latency_s": 0.1022,
+  "cypher": "MATCH (c:CVE)-[:AFFECTS]->(:Product {product_id: \"p:adobe:commerce\"}) RETURN DISTINCT c.cve_id AS name",
+  "precision": 1.0,
+  "recall": 1.0,
+  "f1": 1.0,
+  "exact": true,
+  "predicted": [
+   "CVE-2026-71362",
+   "CVE-2026-75650"
+  ],
+  "version": "v1"
+ },
+ "A3-2|vector": {
+  "answer": "CVE-2026-71362, CVE-2026-75650",
+  "sources": [
+   "CVE-2026-71362",
+   "CVE-2026-75650"
+  ],
+  "latency_s": 41.18,
+  "prompt_tokens": 724,
+  "output_tokens": 46,
+  "context_cves": [
+   "CVE-2026-71362",
+   "CVE-2026-75650",
+   "CVE-2026-42016",
+   "CVE-2026-88779",
+   "CVE-2026-88772"
+  ],
+  "precision": 1.0,
+  "recall": 1.0,
+  "f1": 1.0,
+  "exact": true,
+  "predicted": [
+   "CVE-2026-71362",
+   "CVE-2026-75650"
+  ],
+  "version": "v1"
+ },
+ "A3-2|graph": {
+  "answer": "CVE-2026-71362, CVE-2026-75650",
+  "sources": [
+   "CVE-2026-71362",
+   "CVE-2026-75650"
+  ],
+  "latency_s": 28.0,
+  "prompt_tokens": 564,
+  "output_tokens": 46,
+  "context_cves": [
+   "CVE-2026-71362",
+   "CVE-2026-75650",
+   "CVE-2026-42016",
+   "CVE-2026-88779",
+   "CVE-2026-88772"
+  ],
+  "precision": 1.0,
+  "recall": 1.0,
+  "f1": 1.0,
+  "exact": true,
+  "predicted": [
+   "CVE-2026-71362",
+   "CVE-2026-75650"
+  ],
+  "version": "v2"
+ },
+ "A3-2|text2cypher": {
+  "answer": "CVE-2026-75650; CVE-2026-71362",
+  "latency_s": 33.72,
+  "prompt_tokens": 536,
+  "output_tokens": 47,
+  "cypher": "MATCH (c:CVE)-[:AFFECTS]->(p:Product) WHERE toLower(p.name) CONTAINS toLower('Adobe Commerce') RETURN DISTINCT c.cve_id AS cve_id",
+  "attempts": 1,
+  "error": null,
+  "precision": 1.0,
+  "recall": 1.0,
+  "f1": 1.0,
+  "exact": true,
+  "predicted": [
+   "CVE-2026-71362",
+   "CVE-2026-75650"
+  ],
+  "version": "v2"
+ },
+ "B1-2|oracle_cypher": {
+  "answer": "Ahsay AhsayCBS",
+  "latency_s": 0.1116,
+  "cypher": "MATCH (:CVE {cve_id: \"CVE-2026-105133\"})-[:CHAINED_WITH]-(:CVE)-[:AFFECTS]->(p:Product) RETURN DISTINCT p.name AS name",
+  "precision": 1.0,
+  "recall": 1.0,
+  "f1": 1.0,
+  "exact": true,
+  "predicted": [
+   "Ahsay AhsayCBS"
+  ],
+  "version": "v1"
+ },
+ "B1-2|vector": {
+  "answer": "None of the provided CVEs are chained with CVE-2026-105133.",
+  "sources": [],
+  "latency_s": 33.3,
+  "prompt_tokens": 625,
+  "output_tokens": 30,
+  "context_cves": [
+   "CVE-2015-5477",
+   "CVE-2026-102764",
+   "CVE-2026-96654",
+   "CVE-2026-75650",
+   "CVE-2026-81963"
+  ],
+  "precision": 0.0,
+  "recall": 0.0,
+  "f1": 0.0,
+  "exact": false,
+  "predicted": [],
+  "version": "v1"
+ },
+ "B1-2|graph": {
+  "answer": "Ahsay AhsayCBS",
+  "sources": [
+   "CVE-2026-105133"
+  ],
+  "latency_s": 115.27,
+  "prompt_tokens": 347,
+  "output_tokens": 29,
+  "context_cves": [
+   "CVE-2026-105133",
+   "CVE-2026-105134"
+  ],
+  "precision": 1.0,
+  "recall": 1.0,
+  "f1": 1.0,
+  "exact": true,
+  "predicted": [
+   "Ahsay AhsayCBS"
+  ],
+  "version": "v2"
+ },
+ "B1-2|text2cypher": {
+  "answer": "Ahsay AhsayCBS",
+  "latency_s": 44.31,
+  "prompt_tokens": 549,
+  "output_tokens": 49,
+  "cypher": "MATCH (:CVE {cve_id: 'CVE-2026-105133'})-[:CHAINED_WITH]->(:CVE)-[:AFFECTS]->(p:Product) RETURN DISTINCT p.name AS name",
+  "attempts": 1,
+  "error": null,
+  "precision": 1.0,
+  "recall": 1.0,
+  "f1": 1.0,
+  "exact": true,
+  "predicted": [
+   "Ahsay AhsayCBS"
+  ],
+  "version": "v2"
+ },
+ "B2-1|oracle_cypher": {
+  "answer": "Citrix; WSO2; Zammad GmbH; Palo Alto Networks; ONLYOFFICE; F5",
+  "latency_s": 1.0901,
+  "cypher": "MATCH (:Weakness {weakness_id: \"remote code execution\"})<-[:HAS_WEAKNESS]-(:CVE)-[:AFFECTS]->(:Product)<-[:PRODUCES]-(v:Vendor) RETURN DISTINCT v.name AS name",
+  "precision": 1.0,
+  "recall": 1.0,
+  "f1": 1.0,
+  "exact": true,
+  "predicted": [
+   "Citrix",
+   "F5",
+   "ONLYOFFICE",
+   "Palo Alto Networks",
+   "WSO2",
+   "Zammad GmbH"
+  ],
+  "version": "v1"
+ },
+ "B2-1|vector": {
+  "answer": "BeyondTrust, F5, Palo Alto Networks, N-able",
+  "sources": [
+   "CVE-2026-0322",
+   "CVE-2026-102764",
+   "CVE-2026-86218",
+   "CVE-2026-94127"
+  ],
+  "latency_s": 49.89,
+  "prompt_tokens": 694,
+  "output_tokens": 69,
+  "context_cves": [
+   "CVE-2026-102764",
+   "CVE-2015-5477",
+   "CVE-2026-94127",
+   "CVE-2026-0322",
+   "CVE-2026-86218"
+  ],
+  "precision": 0.5,
+  "recall": 0.3333333333333333,
+  "f1": 0.4,
+  "exact": false,
+  "predicted": [
+   "BeyondTrust",
+   "F5",
+   "N-able",
+   "Palo Alto Networks"
+  ],
+  "version": "v1"
+ },
+ "B2-1|graph": {
+  "answer": "F5 (BIG-IP APM), Palo Alto Networks (PAN-OS), N-able (N-central)",
+  "sources": [
+   "CVE-2026-0322",
+   "CVE-2026-86218",
+   "CVE-2026-94127"
+  ],
+  "latency_s": 31.93,
+  "prompt_tokens": 518,
+  "output_tokens": 70,
+  "context_cves": [
+   "CVE-2026-102764",
+   "CVE-2015-5477",
+   "CVE-2026-94127",
+   "CVE-2026-0322",
+   "CVE-2026-86218"
+  ],
+  "precision": 0.6666666666666666,
+  "recall": 0.3333333333333333,
+  "f1": 0.4444444444444444,
+  "exact": false,
+  "predicted": [
+   "F5",
+   "N-able",
+   "Palo Alto Networks"
+  ],
+  "version": "v2"
+ },
+ "B2-1|text2cypher": {
+  "answer": "",
+  "latency_s": 39.87,
+  "prompt_tokens": 545,
+  "output_tokens": 58,
+  "cypher": "MATCH (v:Vendor)-[:PRODUCES]->(:Product)<-[:AFFECTS]-(c:CVE)-[:HAS_WEAKNESS]->(:Weakness {weakness_id: 'Remote Code Execution'}) RETURN DISTINCT v.name AS name",
+  "attempts": 1,
+  "error": null,
+  "precision": 0.0,
+  "recall": 0.0,
+  "f1": 0.0,
+  "exact": false,
+  "predicted": [],
+  "version": "v2"
+ },
+ "B2-2|oracle_cypher": {
+  "answer": "Fortinet; Citrix; Cisco; Ivanti; BeyondTrust",
+  "latency_s": 0.1239,
+  "cypher": "MATCH (:Weakness {weakness_id: \"authentication bypass\"})<-[:HAS_WEAKNESS]-(:CVE)-[:AFFECTS]->(:Product)<-[:PRODUCES]-(v:Vendor) RETURN DISTINCT v.name AS name",
+  "precision": 1.0,
+  "recall": 1.0,
+  "f1": 1.0,
+  "exact": true,
+  "predicted": [
+   "BeyondTrust",
+   "Cisco",
+   "Citrix",
+   "Fortinet",
+   "Ivanti"
+  ],
+  "version": "v1"
+ },
+ "B2-2|vector": {
+  "answer": "Ivanti, Cisco, BeyondTrust, Citrix, Adobe",
+  "sources": [
+   "CVE-2026-102764",
+   "CVE-2026-104935",
+   "CVE-2026-19490",
+   "CVE-2026-71362",
+   "CVE-2026-76460"
+  ],
+  "latency_s": 44.06,
+  "prompt_tokens": 688,
+  "output_tokens": 79,
+  "context_cves": [
+   "CVE-2026-104935",
+   "CVE-2026-76460",
+   "CVE-2026-102764",
+   "CVE-2026-19490",
+   "CVE-2026-71362"
+  ],
+  "precision": 0.8,
+  "recall": 0.8,
+  "f1": 0.8000000000000002,
+  "exact": false,
+  "predicted": [
+   "Adobe",
+   "BeyondTrust",
+   "Cisco",
+   "Citrix",
+   "Ivanti"
+  ],
+  "version": "v1"
+ },
+ "B2-2|graph": {
+  "answer": "Ivanti, Cisco, BeyondTrust, Citrix",
+  "sources": [
+   "CVE-2026-102764",
+   "CVE-2026-104935",
+   "CVE-2026-19490",
+   "CVE-2026-76460"
+  ],
+  "latency_s": 28.4,
+  "prompt_tokens": 555,
+  "output_tokens": 67,
+  "context_cves": [
+   "CVE-2026-104935",
+   "CVE-2026-76460",
+   "CVE-2026-102764",
+   "CVE-2026-19490",
+   "CVE-2026-71362"
+  ],
+  "precision": 1.0,
+  "recall": 0.8,
+  "f1": 0.888888888888889,
+  "exact": false,
+  "predicted": [
+   "BeyondTrust",
+   "Cisco",
+   "Citrix",
+   "Ivanti"
+  ],
+  "version": "v2"
+ },
+ "B2-2|text2cypher": {
+  "answer": "",
+  "latency_s": 34.51,
+  "prompt_tokens": 544,
+  "output_tokens": 47,
+  "cypher": "MATCH (v:Vendor)-[:PRODUCES]->(:Product)<-[:AFFECTS]-(c:CVE {weakness_id: 'authentication bypass'}) RETURN DISTINCT v.name AS name",
+  "attempts": 1,
+  "error": null,
+  "precision": 0.0,
+  "recall": 0.0,
+  "f1": 0.0,
+  "exact": false,
+  "predicted": [],
+  "version": "v2"
+ },
+ "B3-1|oracle_cypher": {
+  "answer": "Crucible; Crowd Data Center; Fisheye; Bitbucket Data Center; Jira Service Management Data Center; Confluence Data Center; Jira Software Data Center",
+  "latency_s": 0.9371,
+  "cypher": "MATCH (:Product {product_id: \"p:atlassian:bamboodatacenter\"})<-[:PRODUCES]-(:Vendor)-[:PRODUCES]->(o:Product) WHERE o.product_id <> \"p:atlassian:bamboodatacenter\" RETURN DISTINCT o.name AS name",
+  "precision": 1.0,
+  "recall": 1.0,
+  "f1": 1.0,
+  "exact": true,
+  "predicted": [
+   "Bitbucket Data Center",
+   "Confluence Data Center",
+   "Crowd Data Center",
+   "Crucible",
+   "Fisheye",
+   "Jira Service Management Data Center",
+   "Jira Software Data Center"
+  ],
+  "version": "v1"
+ },
+ "B3-1|vector": {
+  "answer": "None of the products mentioned in the corpus are made by the same vendor as Bamboo Data Center. The products mentioned in the corpus are Adobe Commerce, Magento, Microsoft SharePoint, and Plex Media Server, but Bamboo Data Center is not mentioned.",
+  "sources": [],
+  "latency_s": 40.08,
+  "prompt_tokens": 627,
+  "output_tokens": 60,
+  "context_cves": [
+   "CVE-2026-75650",
+   "CVE-2026-71362",
+   "CVE-2026-65660",
+   "CVE-2015-5477",
+   "CVE-2026-96654"
+  ],
+  "precision": 0.0,
+  "recall": 0.0,
+  "f1": 0.0,
+  "exact": false,
+  "predicted": [
+   "Adobe Commerce",
+   "Bamboo Data Center",
+   "Microsoft SharePoint",
+   "Plex Media Server"
+  ],
+  "version": "v1"
+ },
+ "B3-1|graph": {
+  "answer": "Confluence Data Center, Crucible, Jira Software Data Center, Jira Service Management Data Center, Fisheye, Bitbucket Data Center",
+  "sources": [
+   "CVE-2026-21589"
+  ],
+  "latency_s": 49.81,
+  "prompt_tokens": 1124,
+  "output_tokens": 52,
+  "context_cves": [
+   "CVE-2026-75650",
+   "CVE-2026-71362",
+   "CVE-2026-65660",
+   "CVE-2015-5477",
+   "CVE-2026-96654",
+   "CVE-2026-21589",
+   "CVE-2026-96652",
+   "CVE-2026-96655",
+   "CVE-2026-96656"
+  ],
+  "precision": 1.0,
+  "recall": 0.8571428571428571,
+  "f1": 0.923076923076923,
+  "exact": false,
+  "predicted": [
+   "Bitbucket Data Center",
+   "Confluence Data Center",
+   "Crucible",
+   "Fisheye",
+   "Jira Service Management Data Center",
+   "Jira Software Data Center"
+  ],
+  "version": "v2"
+ },
+ "B3-1|text2cypher": {
+  "answer": "",
+  "latency_s": 34.91,
+  "prompt_tokens": 550,
+  "output_tokens": 56,
+  "cypher": "MATCH (v:Vendor {name: 'Bamboo Data Center'})-[:PRODUCES]->(p:Product) <-[:AFFECTS]-(c:CVE {in_corpus: true}) RETURN DISTINCT p.name AS name",
+  "attempts": 1,
+  "error": null,
+  "precision": 0.0,
+  "recall": 0.0,
+  "f1": 0.0,
+  "exact": false,
+  "predicted": [],
+  "version": "v2"
+ },
+ "B3-2|oracle_cypher": {
+  "answer": "FortiPAM; FortiProxy; FortiOS; FortiSwitchManager",
+  "latency_s": 0.0857,
+  "cypher": "MATCH (:Product {product_id: \"p:fortinet:fortimail\"})<-[:PRODUCES]-(:Vendor)-[:PRODUCES]->(o:Product) WHERE o.product_id <> \"p:fortinet:fortimail\" RETURN DISTINCT o.name AS name",
+  "precision": 1.0,
+  "recall": 1.0,
+  "f1": 1.0,
+  "exact": true,
+  "predicted": [
+   "FortiOS",
+   "FortiPAM",
+   "FortiProxy",
+   "FortiSwitchManager"
+  ],
+  "version": "v1"
+ },
+ "B3-2|vector": {
+  "answer": "FortiOS, FortiSwitchManager, FortiProxy, FortiPAM",
+  "sources": [
+   "CVE-2025-25249",
+   "CVE-2025-61624",
+   "CVE-2026-71362",
+   "CVE-2026-75650"
+  ],
+  "latency_s": 54.05,
+  "prompt_tokens": 977,
+  "output_tokens": 72,
+  "context_cves": [
+   "CVE-2026-104286",
+   "CVE-2025-25249",
+   "CVE-2026-75650",
+   "CVE-2025-61624",
+   "CVE-2026-71362"
+  ],
+  "precision": 1.0,
+  "recall": 1.0,
+  "f1": 1.0,
+  "exact": true,
+  "predicted": [
+   "FortiOS",
+   "FortiPAM",
+   "FortiProxy",
+   "FortiSwitchManager"
+  ],
+  "version": "v1"
+ },
+ "B3-2|graph": {
+  "answer": "FortiOS, FortiProxy, FortiSwitchManager, FortiPAM",
+  "sources": [
+   "CVE-2025-25249",
+   "CVE-2025-61624"
+  ],
+  "latency_s": 32.72,
+  "prompt_tokens": 595,
+  "output_tokens": 52,
+  "context_cves": [
+   "CVE-2026-104286",
+   "CVE-2025-25249",
+   "CVE-2026-75650",
+   "CVE-2025-61624",
+   "CVE-2026-71362"
+  ],
+  "precision": 1.0,
+  "recall": 1.0,
+  "f1": 1.0,
+  "exact": true,
+  "predicted": [
+   "FortiOS",
+   "FortiPAM",
+   "FortiProxy",
+   "FortiSwitchManager"
+  ],
+  "version": "v2"
+ },
+ "B3-2|text2cypher": {
+  "answer": "",
+  "latency_s": 64.85,
+  "prompt_tokens": 1294,
+  "output_tokens": 124,
+  "cypher": "MATCH (v:Vendor {name: 'FortiMail'})-[:PRODUCES]->(p:Product) WHERE v.in_corpus = true AND NOT EXISTS ((c:CVE)-[:AFFECTS]->(p)) RETURN DISTINCT p.name AS name",
+  "attempts": 2,
+  "error": "{neo4j_code: Neo.ClientError.Statement.SyntaxError} {message: PatternExpressions are not allowed to introduce new variables: 'c'. (line 1, column 105 (offset: 104))",
+  "precision": 0.0,
+  "recall": 0.0,
+  "f1": 0.0,
+  "exact": false,
+  "predicted": [],
+  "version": "v2"
+ },
+ "C2-1|oracle_cypher": {
+  "answer": "2",
+  "latency_s": 0.4498,
+  "cypher": "MATCH (:Vendor {vendor_id: \"v:adobe\"})-[:PRODUCES]->(:Product)<-[:AFFECTS]-(c:CVE) RETURN count(DISTINCT c) AS n",
+  "precision": 1.0,
+  "recall": 1.0,
+  "f1": 1.0,
+  "exact": true,
+  "predicted": [
+   "2"
+  ],
+  "version": "v1"
+ },
+ "C2-1|vector": {
+  "answer": "3",
+  "sources": [
+   "CVE-2026-71362",
+   "CVE-2026-75650",
+   "CVE-2026-86950"
+  ],
+  "latency_s": 43.59,
+  "prompt_tokens": 666,
+  "output_tokens": 47,
+  "context_cves": [
+   "CVE-2026-75650",
+   "CVE-2026-71362",
+   "CVE-2026-86950",
+   "CVE-2026-42016",
+   "CVE-2021-3199"
+  ],
+  "precision": 0.0,
+  "recall": 0.0,
+  "f1": 0.0,
+  "exact": false,
+  "predicted": [
+   "3"
+  ],
+  "version": "v1"
+ },
+ "C2-1|graph": {
+  "answer": "Two",
+  "sources": [
+   "CVE-2026-71362",
+   "CVE-2026-75650"
+  ],
+  "latency_s": 25.59,
+  "prompt_tokens": 528,
+  "output_tokens": 38,
+  "context_cves": [
+   "CVE-2026-75650",
+   "CVE-2026-71362",
+   "CVE-2026-86950",
+   "CVE-2026-42016",
+   "CVE-2021-3199"
+  ],
+  "precision": 0.0,
+  "recall": 0.0,
+  "f1": 0.0,
+  "exact": false,
+  "predicted": [],
+  "version": "v2"
+ },
+ "C2-1|text2cypher": {
+  "answer": "2",
+  "latency_s": 36.44,
+  "prompt_tokens": 537,
+  "output_tokens": 45,
+  "cypher": "MATCH (c:CVE)-[:AFFECTS]->(p:Product) WHERE toLower(p.name) CONTAINS toLower('Adobe') RETURN count(DISTINCT c) AS n",
+  "attempts": 1,
+  "error": null,
+  "precision": 1.0,
+  "recall": 1.0,
+  "f1": 1.0,
+  "exact": true,
+  "predicted": [
+   "2"
+  ],
+  "version": "v2"
+ },
+ "C2-2|oracle_cypher": {
+  "answer": "4",
+  "latency_s": 0.0972,
+  "cypher": "MATCH (:Vendor {vendor_id: \"v:plex\"})-[:PRODUCES]->(:Product)<-[:AFFECTS]-(c:CVE) RETURN count(DISTINCT c) AS n",
+  "precision": 1.0,
+  "recall": 1.0,
+  "f1": 1.0,
+  "exact": true,
+  "predicted": [
+   "4"
+  ],
+  "version": "v1"
+ },
+ "C2-2|vector": {
+  "answer": "CVE-2026-96652, CVE-2026-96654, CVE-2026-96655, CVE-2026-96656",
+  "sources": [
+   "CVE-2026-96652",
+   "CVE-2026-96654",
+   "CVE-2026-96655",
+   "CVE-2026-96656"
+  ],
+  "latency_s": 56.32,
+  "prompt_tokens": 822,
+  "output_tokens": 88,
+  "context_cves": [
+   "CVE-2026-96656",
+   "CVE-2026-96654",
+   "CVE-2026-96655",
+   "CVE-2026-96652",
+   "CVE-2026-87886"
+  ],
+  "precision": 0.0,
+  "recall": 0.0,
+  "f1": 0.0,
+  "exact": false,
+  "predicted": [],
+  "version": "v1"
+ },
+ "C2-2|graph": {
+  "answer": "Yes, multiple CVEs affect Plex products. The exact number is not specified in the provided context.",
+  "sources": [
+   "CVE-2026-96652",
+   "CVE-2026-96654",
+   "CVE-2026-96655",
+   "CVE-2026-96656"
+  ],
+  "latency_s": 49.46,
+  "prompt_tokens": 835,
+  "output_tokens": 75,
+  "context_cves": [
+   "CVE-2026-96656",
+   "CVE-2026-96654",
+   "CVE-2026-96655",
+   "CVE-2026-96652",
+   "CVE-2026-87886"
+  ],
+  "precision": 0.0,
+  "recall": 0.0,
+  "f1": 0.0,
+  "exact": false,
+  "predicted": [],
+  "version": "v2"
+ },
+ "C2-2|text2cypher": {
+  "answer": "0",
+  "latency_s": 39.91,
+  "prompt_tokens": 537,
+  "output_tokens": 39,
+  "cypher": "MATCH (p:Product {name: 'Plex'})-[:AFFECTS]->(c:CVE) RETURN count(DISTINCT c) AS n",
+  "attempts": 1,
+  "error": null,
+  "precision": 0.0,
+  "recall": 0.0,
+  "f1": 0.0,
+  "exact": false,
+  "predicted": [
+   "0"
+  ],
+  "version": "v2"
+ },
+ "C3-1|oracle_cypher": {
+  "answer": "9",
+  "latency_s": 1.1976,
+  "cypher": "MATCH (c:CVE) WHERE c.in_corpus AND (c)-[:CHAINED_WITH]-() RETURN count(c) AS n",
+  "precision": 1.0,
+  "recall": 1.0,
+  "f1": 1.0,
+  "exact": true,
+  "predicted": [
+   "9"
+  ],
+  "version": "v1"
+ },
+ "C3-1|vector": {
+  "answer": "4",
+  "sources": [
+   "CVE-2026-96652",
+   "CVE-2026-96655",
+   "CVE-2026-96656"
+  ],
+  "latency_s": 49.18,
+  "prompt_tokens": 745,
+  "output_tokens": 57,
+  "context_cves": [
+   "CVE-2026-102764",
+   "CVE-2026-93616",
+   "CVE-2026-96655",
+   "CVE-2026-96656",
+   "CVE-2026-96652"
+  ],
+  "precision": 0.0,
+  "recall": 0.0,
+  "f1": 0.0,
+  "exact": false,
+  "predicted": [
+   "4"
+  ],
+  "version": "v1"
+ },
+ "C3-1|graph": {
+  "answer": "4",
+  "sources": [
+   "CVE-2026-96652",
+   "CVE-2026-96654",
+   "CVE-2026-96655",
+   "CVE-2026-96656"
+  ],
+  "latency_s": 38.77,
+  "prompt_tokens": 880,
+  "output_tokens": 57,
+  "context_cves": [
+   "CVE-2026-102764",
+   "CVE-2026-93616",
+   "CVE-2026-96655",
+   "CVE-2026-96656",
+   "CVE-2026-96652",
+   "CVE-2026-96654"
+  ],
+  "precision": 0.0,
+  "recall": 0.0,
+  "f1": 0.0,
+  "exact": false,
+  "predicted": [
+   "4"
+  ],
+  "version": "v2"
+ },
+ "C3-1|text2cypher": {
+  "answer": "5",
+  "latency_s": 42.35,
+  "prompt_tokens": 543,
+  "output_tokens": 39,
+  "cypher": "MATCH (c:CVE {in_corpus: true})-[:CHAINED_WITH]->(c2:CVE) RETURN count(DISTINCT c) AS n",
+  "attempts": 1,
+  "error": null,
+  "precision": 0.0,
+  "recall": 0.0,
+  "f1": 0.0,
+  "exact": false,
+  "predicted": [
+   "5"
+  ],
+  "version": "v2"
+ },
+ "C4-1|oracle_cypher": {
+  "answer": "",
+  "latency_s": 0.0,
+  "error": "BufferError: Existing exports of data: object cannot be re-sized",
+  "precision": 0.0,
+  "recall": 0.0,
+  "f1": 0.0,
+  "exact": false,
+  "predicted": [],
+  "version": "v1"
+ },
+ "C4-1|vector": {
+  "answer": "Acronis Backup plugin for cPanel & WHM, Acronis Backup extension for Plesk, Acronis Backup plugin for DirectAdmin",
+  "sources": [
+   "CVE-2026-102764",
+   "CVE-2026-71362",
+   "CVE-2026-87886"
+  ],
+  "latency_s": 23.43,
+  "prompt_tokens": 651,
+  "output_tokens": 76,
+  "context_cves": [
+   "CVE-2026-75650",
+   "CVE-2026-71362",
+   "CVE-2015-5477",
+   "CVE-2026-102764",
+   "CVE-2026-87886"
+  ],
+  "precision": 0.0,
+  "recall": 0.0,
+  "f1": 0.0,
+  "exact": false,
+  "predicted": [
+   "Acronis Backup extension for Plesk",
+   "Acronis Backup plugin for DirectAdmin",
+   "Acronis Backup plugin for cPanel & WHM"
+  ]
+ },
+ "C4-1|graph": {
+  "answer": "Adobe Commerce and Magento Open Source",
+  "sources": [
+   "CVE-2026-71362",
+   "CVE-2026-75650"
+  ],
+  "latency_s": 13.54,
+  "prompt_tokens": 539,
+  "output_tokens": 42,
+  "context_cves": [
+   "CVE-2026-75650",
+   "CVE-2026-71362",
+   "CVE-2015-5477",
+   "CVE-2026-102764",
+   "CVE-2026-87886"
+  ],
+  "precision": 0.5,
+  "recall": 0.07692307692307693,
+  "f1": 0.13333333333333336,
+  "exact": false,
+  "predicted": [
+   "Adobe Commerce",
+   "Magento Open Source"
+  ]
+ },
+ "C4-1|text2cypher": {
+  "answer": "",
+  "latency_s": 29.74,
+  "prompt_tokens": 1167,
+  "output_tokens": 146,
+  "cypher": "MATCH (c:CVE)-[:AFFECTS]->(p:Product) WHERE c.in_corpus = true AND c HAS (n:CVE) WHERE n IN (c)-[:CHAINED_WITH]->(m:CVE) AND m IN (c)-[:AFFECTS]->(p) RETURN DISTINCT p.name AS name",
+  "attempts": 2,
+  "error": "{neo4j_code: Neo.ClientError.Statement.SyntaxError} {message: Invalid input 'HAS': expected an expression, 'FOREACH', 'ORDER BY', 'CALL', 'CREATE', 'LOAD CSV', 'DELETE', 'DETACH', 'FINISH', 'INSERT', 'LIMIT', 'MATCH', 'MERGE', 'NODETACH', 'OFFSET', 'OPTIONAL', 'REMOVE', 'RETURN', 'SET', 'SKIP', 'UNION', 'UNWIND', 'USE', 'WITH' or <EOF> (line 1, column 70 (offset: 69))",
+  "precision": 0.0,
+  "recall": 0.0,
+  "f1": 0.0,
+  "exact": false,
+  "predicted": []
+ },
+ "C5-1|oracle_cypher": {
+  "answer": "31",
+  "latency_s": 0.0055,
+  "cypher": "MATCH (v:Vendor)-[:PRODUCES]->(:Product)<-[:AFFECTS]-(:CVE) RETURN count(DISTINCT v) AS n",
+  "precision": 1.0,
+  "recall": 1.0,
+  "f1": 1.0,
+  "exact": true,
+  "predicted": [
+   "31"
+  ]
+ },
+ "C5-1|vector": {
+  "answer": "3",
+  "sources": [
+   "CVE-2026-71362",
+   "CVE-2026-75650",
+   "CVE-2026-96656"
+  ],
+  "latency_s": 21.2,
+  "prompt_tokens": 668,
+  "output_tokens": 47,
+  "context_cves": [
+   "CVE-2026-75650",
+   "CVE-2015-5477",
+   "CVE-2026-71362",
+   "CVE-2026-96656",
+   "CVE-2026-102764"
+  ],
+  "precision": 0.0,
+  "recall": 0.0,
+  "f1": 0.0,
+  "exact": false,
+  "predicted": [
+   "3"
+  ]
+ },
+ "C5-1|graph": {
+  "answer": "At least 5 different vendors are affected by CVEs in the corpus: Adobe, ISC, BeyondTrust, Plex, and Remote Support.",
+  "sources": [
+   "CVE-2015-5477",
+   "CVE-2026-102764",
+   "CVE-2026-71362",
+   "CVE-2026-75650",
+   "CVE-2026-96652",
+   "CVE-2026-96654",
+   "CVE-2026-96655",
+   "CVE-2026-96656"
+  ],
+  "latency_s": 30.75,
+  "prompt_tokens": 944,
+  "output_tokens": 123,
+  "context_cves": [
+   "CVE-2026-75650",
+   "CVE-2015-5477",
+   "CVE-2026-71362",
+   "CVE-2026-96656",
+   "CVE-2026-102764",
+   "CVE-2026-96655",
+   "CVE-2026-96654",
+   "CVE-2026-96652"
+  ],
+  "precision": 0.0,
+  "recall": 0.0,
+  "f1": 0.0,
+  "exact": false,
+  "predicted": [
+   "5"
+  ]
+ },
+ "C5-1|text2cypher": {
+  "answer": "",
+  "latency_s": 16.11,
+  "prompt_tokens": 485,
+  "output_tokens": 46,
+  "cypher": "MATCH (c:CVE {in_corpus: true})-[:AFFECTS]->(p:Product)-[:PRODUCES]->(v:Vendor) RETURN DISTINCT v.name AS name",
+  "attempts": 1,
+  "error": null,
+  "precision": 0.0,
+  "recall": 0.0,
+  "f1": 0.0,
+  "exact": false,
+  "predicted": []
+ },
+ "D1-2|oracle_cypher": {
+  "answer": "CVE-2026-105133; CVE-2026-102764; CVE-2026-76460; CVE-2026-42018; CVE-2026-76504; CVE-2026-19490; CVE-2026-85706; CVE-2026-20079; CVE-2026-67277; CVE-2026-104935",
+  "latency_s": 0.0113,
+  "cypher": "MATCH (c:CVE) WHERE c.in_corpus AND any(k IN [\"authentication bypass\", \"bypass authentication\", \"improper authentication\", \"missing authentication\"] WHERE toLower(c.text) CONTAINS k) RETURN c.cve_id AS name",
+  "precision": 1.0,
+  "recall": 1.0,
+  "f1": 1.0,
+  "exact": true,
+  "predicted": [
+   "CVE-2026-102764",
+   "CVE-2026-104935",
+   "CVE-2026-105133",
+   "CVE-2026-19490",
+   "CVE-2026-20079",
+   "CVE-2026-42018",
+   "CVE-2026-67277",
+   "CVE-2026-76460",
+   "CVE-2026-76504",
+   "CVE-2026-85706"
+  ]
+ },
+ "D1-2|vector": {
+  "answer": "CVE-2026-20079, CVE-2026-76460, CVE-2026-76504",
+  "sources": [
+   "CVE-2026-20079",
+   "CVE-2026-76460",
+   "CVE-2026-76504"
+  ],
+  "latency_s": 23.73,
+  "prompt_tokens": 784,
+  "output_tokens": 69,
+  "context_cves": [
+   "CVE-2026-20079",
+   "CVE-2026-76460",
+   "CVE-2026-76504",
+   "CVE-2026-5430",
+   "CVE-2026-85102"
+  ],
+  "precision": 1.0,
+  "recall": 0.3,
+  "f1": 0.4615384615384615,
+  "exact": false,
+  "predicted": [
+   "CVE-2026-20079",
+   "CVE-2026-76460",
+   "CVE-2026-76504"
+  ]
+ },
+ "D1-2|graph": {
+  "answer": "Authentication bypass vulnerabilities in Cisco Secure Firewall Management Center (FMC) Software, Cisco Security Cloud Control (SCC) Firewall Management, Cisco Identity Services Engine (ISE), Cisco ISE Passive Identity Connector (ISE-PIC), Cisco Catalyst SD-WAN Manager, and Check Point Security Gateway",
+  "sources": [
+   "CVE-2026-20079",
+   "CVE-2026-76460",
+   "CVE-2026-76504",
+   "CVE-2026-85102"
+  ],
+  "latency_s": 19.28,
+  "prompt_tokens": 600,
+  "output_tokens": 112,
+  "context_cves": [
+   "CVE-2026-20079",
+   "CVE-2026-76460",
+   "CVE-2026-76504",
+   "CVE-2026-5430",
+   "CVE-2026-85102"
+  ],
+  "precision": 0.0,
+  "recall": 0.0,
+  "f1": 0.0,
+  "exact": false,
+  "predicted": []
+ },
+ "D1-2|text2cypher": {
+  "answer": "CVE-2026-105133; CVE-2026-102764; CVE-2026-76460; CVE-2026-86060; CVE-2026-42018; CVE-2026-76504; CVE-2026-19490; CVE-2026-5430; CVE-2026-85706; CVE-2026-86218; CVE-2026-20079; CVE-2026-67279; CVE-2026-67277; CVE-2026-104935",
+  "latency_s": 16.01,
+  "prompt_tokens": 484,
+  "output_tokens": 45,
+  "cypher": "MATCH (c:CVE) WHERE toLower(c.text) CONTAINS 'login' OR toLower(c.text) CONTAINS 'authentication' RETURN DISTINCT c.cve_id AS cve_id",
+  "attempts": 1,
+  "error": null,
+  "precision": 0.7142857142857143,
+  "recall": 1.0,
+  "f1": 0.8333333333333333,
+  "exact": false,
+  "predicted": [
+   "CVE-2026-102764",
+   "CVE-2026-104935",
+   "CVE-2026-105133",
+   "CVE-2026-19490",
+   "CVE-2026-20079",
+   "CVE-2026-42018",
+   "CVE-2026-5430",
+   "CVE-2026-67277",
+   "CVE-2026-67279",
+   "CVE-2026-76460",
+   "CVE-2026-76504",
+   "CVE-2026-85706",
+   "CVE-2026-86060",
+   "CVE-2026-86218"
+  ]
+ },
+ "D1-3|oracle_cypher": {
+  "answer": "CVE-2026-86950; CVE-2026-96951; CVE-2026-0322; CVE-2026-106931; CVE-2026-88772; CVE-2026-88771; CVE-2026-5430; CVE-2026-102489; CVE-2026-87491; CVE-2016-3081; CVE-2021-3199; CVE-2026-105134; CVE-2026-110936; CVE-2026-86218; CVE-2026-94127; CVE-2026-76461; CVE-2026-87902; CVE-2026-75650; CVE-2023-22894; CVE-2026-104935; CVE-2026-85102",
+  "latency_s": 0.0081,
+  "cypher": "MATCH (c:CVE) WHERE c.in_corpus AND any(k IN [\"remote code execution\", \"arbitrary code\", \"command injection\", \"execute arbitrary commands\"] WHERE toLower(c.text) CONTAINS k) RETURN c.cve_id AS name",
+  "precision": 1.0,
+  "recall": 1.0,
+  "f1": 1.0,
+  "exact": true,
+  "predicted": [
+   "CVE-2016-3081",
+   "CVE-2021-3199",
+   "CVE-2023-22894",
+   "CVE-2026-0322",
+   "CVE-2026-102489",
+   "CVE-2026-104935",
+   "CVE-2026-105134",
+   "CVE-2026-106931",
+   "CVE-2026-110936",
+   "CVE-2026-5430",
+   "CVE-2026-75650",
+   "CVE-2026-76461",
+   "CVE-2026-85102",
+   "CVE-2026-86218",
+   "CVE-2026-86950",
+   "CVE-2026-87491",
+   "CVE-2026-87902",
+   "CVE-2026-88771",
+   "CVE-2026-88772",
+   "CVE-2026-94127",
+   "CVE-2026-96951"
+  ]
+ },
+ "D1-3|vector": {
+  "answer": "Apache Struts RCE Vulnerability, Cisco Secure Firewall Management Center (FMC) Software vulnerability, Cisco AsyncOS Software for Cisco Secure Email Gateway vulnerability, F5 BIG-IP APM vulnerability, Cisco Secure Email Gateway vulnerability",
+  "sources": [
+   "CVE-2016-3081",
+   "CVE-2026-20079",
+   "CVE-2026-76461",
+   "CVE-2026-76519",
+   "CVE-2026-94127"
+  ],
+  "latency_s": 29.01,
+  "prompt_tokens": 812,
+  "output_tokens": 111,
+  "context_cves": [
+   "CVE-2016-3081",
+   "CVE-2026-20079",
+   "CVE-2026-76461",
+   "CVE-2026-94127",
+   "CVE-2026-76519"
+  ],
+  "precision": 0.0,
+  "recall": 0.0,
+  "f1": 0.0,
+  "exact": false,
+  "predicted": []
+ },
+ "D1-3|graph": {
+  "answer": "The vulnerabilities that could let an attacker remotely run their own code or commands on the system are: command injection in Apache Struts (CVE-2026-20079), SQL injection in Cisco Secure Email Gateway (CVE-2026-76461), and heap-based buffer overflow in BIG-IP APM (CVE-2026-94127).",
+  "sources": [
+   "CVE-2026-20079",
+   "CVE-2026-76461",
+   "CVE-2026-94127"
+  ],
+  "latency_s": 21.26,
+  "prompt_tokens": 554,
+  "output_tokens": 116,
+  "context_cves": [
+   "CVE-2016-3081",
+   "CVE-2026-20079",
+   "CVE-2026-76461",
+   "CVE-2026-94127",
+   "CVE-2026-76519"
+  ],
+  "precision": 0.6666666666666666,
+  "recall": 0.09523809523809523,
+  "f1": 0.16666666666666666,
+  "exact": false,
+  "predicted": [
+   "CVE-2026-20079",
+   "CVE-2026-76461",
+   "CVE-2026-94127"
+  ]
+ },
+ "D1-3|text2cypher": {
+  "answer": "CVE-2026-96951; CVE-2026-0322; CVE-2026-106931; CVE-2026-88772; CVE-2026-5430; CVE-2026-102489; CVE-2016-3081; CVE-2021-3199; CVE-2026-105134; CVE-2026-86218; CVE-2026-94127; CVE-2026-87902; CVE-2023-22894",
+  "latency_s": 18.32,
+  "prompt_tokens": 489,
+  "output_tokens": 70,
+  "cypher": "MATCH (c:CVE {in_corpus: true})-[:HAS_WEAKNESS]->(w:Weakness) WHERE toLower(w.name) CONTAINS toLower('remote code execution') OR toLower(w.name) CONTAINS toLower('command injection') RETURN DISTINCT c.cve_id AS cve_id",
+  "attempts": 1,
+  "error": null,
+  "precision": 1.0,
+  "recall": 0.6190476190476191,
+  "f1": 0.7647058823529412,
+  "exact": false,
+  "predicted": [
+   "CVE-2016-3081",
+   "CVE-2021-3199",
+   "CVE-2023-22894",
+   "CVE-2026-0322",
+   "CVE-2026-102489",
+   "CVE-2026-105134",
+   "CVE-2026-106931",
+   "CVE-2026-5430",
+   "CVE-2026-86218",
+   "CVE-2026-87902",
+   "CVE-2026-88772",
+   "CVE-2026-94127",
+   "CVE-2026-96951"
+  ]
+ },
+ "D1-4|oracle_cypher": {
+  "answer": "CVE-2015-5477; CVE-2026-88779; CVE-2026-88772; CVE-2026-67277",
+  "latency_s": 0.0092,
+  "cypher": "MATCH (c:CVE) WHERE c.in_corpus AND any(k IN [\"denial of service\"] WHERE toLower(c.text) CONTAINS k) RETURN c.cve_id AS name",
+  "precision": 1.0,
+  "recall": 1.0,
+  "f1": 1.0,
+  "exact": true,
+  "predicted": [
+   "CVE-2015-5477",
+   "CVE-2026-67277",
+   "CVE-2026-88772",
+   "CVE-2026-88779"
+  ]
+ },
+ "D1-4|vector": {
+  "answer": "BIG-IP APM, Cisco Identity Services Engine (ISE), Cisco Secure Firewall Management Center (FMC), and SiteGuard Server Edition",
+  "sources": [
+   "CVE-2026-106931",
+   "CVE-2026-20079",
+   "CVE-2026-76460",
+   "CVE-2026-94127"
+  ],
+  "latency_s": 24.27,
+  "prompt_tokens": 775,
+  "output_tokens": 83,
+  "context_cves": [
+   "CVE-2026-94127",
+   "CVE-2026-76460",
+   "CVE-2026-20079",
+   "CVE-2026-106931",
+   "CVE-2016-3081"
+  ],
+  "precision": 0.0,
+  "recall": 0.0,
+  "f1": 0.0,
+  "exact": false,
+  "predicted": []
+ },
+ "D1-4|graph": {
+  "answer": "heap-based buffer overflow, authentication bypass, OS command injection, command injection",
+  "sources": [
+   "CVE-2016-3081",
+   "CVE-2026-106931",
+   "CVE-2026-20079",
+   "CVE-2026-76460",
+   "CVE-2026-94127"
+  ],
+  "latency_s": 16.62,
+  "prompt_tokens": 571,
+  "output_tokens": 80,
+  "context_cves": [
+   "CVE-2026-94127",
+   "CVE-2026-76460",
+   "CVE-2026-20079",
+   "CVE-2026-106931",
+   "CVE-2016-3081"
+  ],
+  "precision": 0.0,
+  "recall": 0.0,
+  "f1": 0.0,
+  "exact": false,
+  "predicted": []
+ },
+ "D1-4|text2cypher": {
+  "answer": "",
+  "latency_s": 16.98,
+  "prompt_tokens": 483,
+  "output_tokens": 63,
+  "cypher": "MATCH (c:CVE {in_corpus: true})-[:AFFECTS]->(p:Product) WHERE toLower(c.text) CONTAINS 'crash' OR toLower(c.text) CONTAINS 'unavailable' RETURN DISTINCT c.cve_id AS cve_id",
+  "attempts": 1,
+  "error": null,
+  "precision": 0.0,
+  "recall": 0.0,
+  "f1": 0.0,
+  "exact": false,
+  "predicted": []
+ }
+}
