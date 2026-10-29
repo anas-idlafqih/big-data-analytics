@@ -270,7 +270,7 @@ with st.sidebar:
     inject_html(auth_pill_html())
     st.markdown("")
 
-    if st.button("Test connection", key="health", use_container_width=True):
+    if st.button("Test connection", key="health_btn", use_container_width=True):
         st.session_state.health = check_health(api_url)
         if st.session_state.health is None:
             st.error("API unreachable.")

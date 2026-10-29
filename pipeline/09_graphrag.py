@@ -95,7 +95,8 @@ def block(f: dict, mode: str, text_chars: int) -> str:
     return "\n".join(lines)
 
 
-def answer(question: str, mode: str = "graph", k: int = 5, driver=None, num_ctx: int = 8192) -> dict:
+def retrieve(question: str, mode: str = "graph", k: int = 5, driver=None) -> dict:
+    """Retrieval half of answer(): the context text, its CVE ids and the retrieval time."""
     own_driver = driver is None
     if own_driver:
         driver = loader.GraphDatabase.driver(loader.URI, auth=(loader.USER, loader.get_password()))
@@ -133,12 +134,19 @@ def answer(question: str, mode: str = "graph", k: int = 5, driver=None, num_ctx:
 
     context = "\n\n".join(parts)
     context_ids = [f["cve_id"] for f in main] + [f["cve_id"] for f in chain_facts]
+    return {"context": context, "context_ids": context_ids, "retrieval_s": retrieval_s}
+
+
+def _schema(context_ids: list[str]) -> dict:
     # the declared sources can only be CVE ids of the retrieved context (enum in the schema)
     id_schema = {"type": "string", "enum": context_ids} if context_ids else {"type": "string"}
-    schema = {"type": "object", "required": ["answer", "sources"],
-              "properties": {"answer": {"type": "string"},
-                             "sources": {"type": "array", "items": id_schema}}}
-    result = ollama_client.chat(SYSTEM, f"Context:\n{context}\n\nQuestion: {question}", num_ctx=num_ctx, schema=schema)
+    return {"type": "object", "required": ["answer", "sources"],
+            "properties": {"answer": {"type": "string"},
+                           "sources": {"type": "array", "items": id_schema}}}
+
+
+def _finish(question: str, mode: str, ret: dict, result: dict) -> dict:
+    context_ids = ret["context_ids"]
     try:
         parsed = json.loads(result["text"])
         answer_text, sources = str(parsed["answer"]), sorted(set(parsed.get("sources", [])))
@@ -149,10 +157,71 @@ def answer(question: str, mode: str = "graph", k: int = 5, driver=None, num_ctx:
         "question": question, "mode": mode, "answer": answer_text,
         "context_cves": context_ids, "sources": sources,
         "cited_outside_context": [c for c in inline if c not in context_ids],
-        "retrieval_s": retrieval_s, "generation_s": result["wall_s"],
+        "retrieval_s": ret["retrieval_s"], "generation_s": result["wall_s"],
         "prompt_tokens": result["prompt_tokens"], "output_tokens": result["output_tokens"],
-        "context": context,
+        "context": ret["context"],
     }
+
+
+def answer(question: str, mode: str = "graph", k: int = 5, driver=None, num_ctx: int = 8192) -> dict:
+    ret = retrieve(question, mode, k, driver)
+    result = ollama_client.chat(SYSTEM, f"Context:\n{ret['context']}\n\nQuestion: {question}",
+                                num_ctx=num_ctx, schema=_schema(ret["context_ids"]))
+    return _finish(question, mode, ret, result)
+
+
+class AnswerStream:
+    """Pulls the text of the "answer" field out of the partial JSON the model streams."""
+    _START = re.compile(r'"answer"\s*:\s*"')
+
+    def __init__(self) -> None:
+        self.buf = ""
+        self.sent = 0
+
+    def feed(self, delta: str) -> str:
+        """Add a chunk; return the newly decoded part of the answer ('' if there is none yet)."""
+        self.buf += delta
+        m = self._START.search(self.buf)
+        if not m:
+            return ""
+        raw, i, esc = [], m.end(), False
+        for ch in self.buf[i:]:
+            if esc:
+                esc = False
+            elif ch == "\\":
+                esc = True
+            elif ch == '"':
+                break
+            raw.append(ch)
+        text = "".join(raw)
+        tail = re.search(r"\\+$", text)
+        if tail and len(tail.group()) % 2:      # a lone backslash: its escape is not complete yet
+            text = text[:-1]
+        text = re.sub(r"\\u[0-9a-fA-F]{0,3}$", "", text)
+        try:
+            decoded = json.loads(f'"{text}"')
+        except ValueError:
+            return ""
+        out, self.sent = decoded[self.sent:], len(decoded)
+        return out
+
+
+def answer_stream(question: str, mode: str = "graph", k: int = 5, driver=None, num_ctx: int = 8192):
+    """Generator version of answer(). Yields ("retrieval", ret), then ("token", text) while the
+    answer is generated, then ("final", result) with the same dict answer() returns."""
+    ret = retrieve(question, mode, k, driver)
+    yield "retrieval", ret
+    parser, result = AnswerStream(), None
+    for kind, payload in ollama_client.chat_stream(
+            SYSTEM, f"Context:\n{ret['context']}\n\nQuestion: {question}",
+            num_ctx=num_ctx, schema=_schema(ret["context_ids"])):
+        if kind == "delta":
+            piece = parser.feed(payload)
+            if piece:
+                yield "token", piece
+        else:
+            result = payload
+    yield "final", _finish(question, mode, ret, result)
 
 
 def main() -> None:

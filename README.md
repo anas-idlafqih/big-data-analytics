@@ -20,7 +20,32 @@ This project builds a Knowledge Graph of software vulnerabilities (CVEs, Product
 - `docker/`: Infrastructure as Code (docker-compose)
 
 ##  How to Run
-*(To be completed)*
+Frontend (React + Vite), from the repo root:
+
+```bash
+docker compose -f docker/docker-compose.yml up -d neo4j
+python -m uvicorn api.app:app --port 8000
+cd web && npm install && npm run dev      # http://127.0.0.1:5173
+```
+
+No backend running? The app falls back to built-in demo data (Settings > Data source).
+
+Try the stack without the full pipeline (sample data, not real vulnerabilities):
+
+```bash
+python scripts/seed_demo_graph.py --fake-embeddings   # loads a small sample graph into an EMPTY Neo4j
+python scripts/mock_ollama.py                         # stand-in for Ollama: canned answers, plumbing tests only
+```
+
+Tests:
+
+```bash
+pip install -r requirements-dev.txt && python -m pytest tests   # router, streaming parser, API contract
+cd web && npm test                                              # triage scoring, analytics, SSE, demo router
+```
+
+API additions: `POST /ask` now takes `mode: auto|graph|vector` (auto routes aggregations to exact Cypher), `POST /ask/stream` streams
+server-sent events, `GET /graph` feeds the explorer. Env: `ASK_CACHE_TTL`, `RATE_LIMIT_PER_MIN`, `CORS_ORIGINS`.
 
 ##  License
 MIT License
